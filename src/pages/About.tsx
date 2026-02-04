@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaLightbulb, FaShieldAlt, FaUsers, FaGlobe } from 'react-icons/fa';
+import { FaLightbulb, FaShieldAlt, FaUsers } from 'react-icons/fa';
 import './About.css';
 
 const MotionLink = motion(Link);
