@@ -1,0 +1,317 @@
+/* Hero.css - Split Corporate Layout */
+.hero-wrapper {
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-body);
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--nav-height);
+    overflow: hidden;
+}
+
+.hero-split-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Left Panel - Solid Content Area */
+.hero-left-panel {
+    width: 40%;
+    background: var(--bg-body);
+    padding: 4rem 4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 20;
+}
+
+.content-inner {
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    min-height: 450px;
+    /* Pre-allocated space to prevent jumping */
+}
+
+.content-inner>* {
+    grid-area: 1 / 1;
+}
+
+.insight-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: block;
+    position: relative;
+    padding-left: 12px;
+}
+
+.insight-tag::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--color-primary);
+}
+
+.hero-headline {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.03em;
+}
+
+.highlight-text {
+    color: var(--color-primary);
+}
+
+.hero-lead-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 400;
+    margin-bottom: 3rem;
+    max-width: 480px;
+}
+
+.cta-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.btn-primary-solid {
+    background: var(--color-brand-navy);
+    color: #fff;
+    padding: 18px 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 0;
+}
+
+.btn-primary-solid:hover {
+    background: var(--color-primary);
+}
+
+.btn-icon {
+    font-size: 0.8em;
+}
+
+.link-group {
+    display: flex;
+    gap: 2rem;
+}
+
+.text-link {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.text-link:hover {
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--color-primary);
+}
+
+/* Indicators */
+.slide-indicators {
+    position: absolute;
+    bottom: 4rem;
+    left: 4vw;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+.active-dot {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+}
+
+.dots-line {
+    height: 2px;
+    width: 100px;
+    background: rgba(0, 0, 0, 0.05);
+    margin-left: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.line-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--color-primary);
+}
+
+/* Right Panel - Video Area */
+.hero-right-panel {
+    width: 60%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    filter: saturate(1.1) contrast(1.05);
+}
+
+.video-overlay-grad {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--bg-body) 0%, transparent 45%);
+    z-index: 2;
+}
+
+
+
+/* Floating Card - Premium Glass */
+.next-insight-card {
+    position: absolute;
+    bottom: 5rem;
+    right: 5rem;
+    background: var(--bg-white-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 30px;
+    width: 320px;
+    border: 1px solid var(--border-light);
+    border-left: 4px solid var(--color-primary);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-lg);
+    z-index: 10;
+}
+
+.next-insight-card:hover {
+    background: #fff;
+    border-color: rgba(0, 191, 179, 0.2);
+}
+
+.mini-label {
+    font-size: 0.7rem;
+    color: #64748b;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.next-insight-card h4 {
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0;
+    padding-right: 20px;
+}
+
+.card-icon {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    color: var(--color-primary);
+}
+
+@media (max-width: 968px) {
+    .hero-wrapper {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .hero-split-layout {
+        flex-direction: column-reverse;
+        /* Stack content ON TOP of video visually, or logic? Usually Image Top, Text Bottom for blog, but for Hero: Text Top is better or Image Top? 'column' puts Left Panel (Text) first. That is correct. */
+        flex-direction: column;
+    }
+
+    /* Text Panel */
+    .hero-left-panel {
+        width: 100%;
+        padding: 120px 20px 60px;
+        /* Top padding for Navbar */
+        height: auto;
+        min-height: auto;
+        align-items: center;
+        text-align: center;
+        border-right: none;
+    }
+
+    .hero-headline {
+        font-size: 2.5rem;
+        /* Explicit smaller size */
+    }
+
+    .hero-lead-text {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .cta-container {
+        align-items: center;
+    }
+
+    /* Video Panel */
+    .hero-right-panel {
+        width: 100%;
+        height: 350px;
+        /* Fixed height for video */
+        min-height: 300px;
+    }
+
+    .next-insight-card {
+        display: none;
+    }
+
+    .slide-indicators {
+        display: none;
+    }
+
+    .video-overlay-grad {
+        background: linear-gradient(to top, var(--bg-body) 0%, transparent 50%);
+    }
+}

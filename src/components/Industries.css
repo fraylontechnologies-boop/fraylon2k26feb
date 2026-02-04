@@ -1,0 +1,342 @@
+/* Industries.css */
+.industries-section {
+    padding: 0;
+    background: #fff;
+    width: 100%;
+    position: relative;
+    /* overflow: hidden; Removed to prevent cutoff */
+    height: auto;
+    /* Allow growth */
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+    /* Stretch children */
+}
+
+.industries-wrapper {
+    display: grid;
+    grid-template-columns: 38% 34% 28%;
+    width: 100%;
+    min-height: 100vh;
+    /* Ensure at least full screen */
+    margin: 0;
+    max-width: 100%;
+}
+
+/* Left Column: Image */
+.ind-image-col {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    background: #0f172a;
+}
+
+.ind-hero-image-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ind-hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ind-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+}
+
+.ind-image-content {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    right: 60px;
+    z-index: 10;
+}
+
+.ind-quote-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-left: 4px solid #1a237e;
+    /* Dark Blue border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.ind-quote-box p {
+    color: #1e293b;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Middle Column: Content */
+.ind-content-col {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+}
+
+.ind-content-inner {
+    width: 100%;
+}
+
+.ind-overline {
+    display: block;
+    color: #00c6a5;
+    /* Teal */
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 15px;
+}
+
+.ind-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    font-family: 'Manrope', sans-serif;
+    /* Assuming font stack */
+}
+
+.ind-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #64748b;
+    margin-bottom: 40px;
+    max-width: 90%;
+}
+
+.ind-capabilities-section {
+    margin-bottom: 40px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 30px;
+}
+
+.ind-cap-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+.ind-cap-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ind-cap-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1rem;
+    color: #334155;
+    font-weight: 500;
+}
+
+.ind-check-icon {
+    color: #00c6a5;
+    font-size: 1.1rem;
+}
+
+.btn-deep-dive {
+    background: #1e293b;
+    /* Dark Navy */
+    color: #fff;
+    padding: 18px 40px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.btn-deep-dive:hover {
+    background: #334155;
+    transform: translateY(-2px);
+}
+
+.ind-stats-row {
+    display: flex;
+    gap: 50px;
+}
+
+.ind-stat-block .stat-val {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #00c6a5;
+    /* Teal */
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.ind-stat-block .stat-lbl {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* Right Column: List */
+.ind-list-col {
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #f1f5f9;
+}
+
+.ind-list-header {
+    padding: 60px 40px 30px;
+}
+
+.ind-list-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.ind-nav-list {
+    /* flex: 1; Removed to allow natural height */
+    /* overflow-y: auto; Removed internal scroll */
+    display: flex;
+    flex-direction: column;
+}
+
+.ind-nav-item {
+    padding: 25px 40px;
+    border-bottom: 1px solid #e2e8f0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.ind-nav-item:hover {
+    background: #fff;
+}
+
+.ind-nav-item.active {
+    background: #fff;
+    border-left: 4px solid #00c6a5;
+    /* Teal Indicator */
+}
+
+.ind-nav-icon-wrapper {
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ind-active-arrow {
+    color: #00c6a5;
+    font-size: 0.9rem;
+}
+
+.ind-nav-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.ind-nav-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 4px;
+    transition: color 0.3s;
+}
+
+.ind-nav-tagline {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #94a3b8;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.ind-nav-item.active .ind-nav-title {
+    color: #00c6a5;
+}
+
+.ind-nav-icon-right {
+    color: #cbd5e1;
+    font-size: 1.8rem;
+    transition: color 0.3s;
+    margin-left: 20px;
+}
+
+.ind-nav-item.active .ind-nav-icon-right {
+    color: #00c6a5;
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+    .industries-wrapper {
+        grid-template-columns: 35% 35% 30%;
+    }
+
+    .ind-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .industries-wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .ind-list-col {
+        display: none;
+        /* For now hide list or stack it? */
+    }
+
+    /* Just handling a basic responsive case. The user asked for "fit to screen" before so sticking to desktop focus first. */
+}
+
+@media (max-width: 1024px) {
+    .industries-section {
+        height: auto;
+        padding: 0;
+    }
+
+    .industries-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ind-image-col {
+        height: 400px;
+    }
+
+    .ind-list-col {
+        display: flex;
+        order: 3;
+    }
+}

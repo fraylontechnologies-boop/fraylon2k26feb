@@ -1,0 +1,57 @@
+/* Contact.css */
+.contact-cta-section {
+    padding: 100px 60px;
+    background: var(--bg-surface);
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.cta-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.cta-content h2 {
+    font-size: 3.5rem;
+    color: var(--text-main);
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+}
+
+.cta-content p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+}
+
+.cta-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.cta-bg-graphic {
+    position: absolute;
+    right: -100px;
+    top: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 191, 179, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .cta-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .cta-content h2 {
+        font-size: 2.5rem;
+    }
+}

@@ -1,0 +1,406 @@
+.projects-page {
+    padding-top: 100px;
+    background: var(--bg-body);
+    min-height: 100vh;
+    color: var(--text-main);
+    padding-bottom: 80px;
+}
+
+.projects-hero {
+    text-align: center;
+    padding: 60px 20px 80px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.projects-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--text-main) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.projects-hero p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* --- FILTER STYLES --- */
+/* --- FILTER STYLES (PREMIUM DOCK) --- */
+/* --- CLEAN SIDEBAR LAYOUT --- */
+.projects-layout {
+    display: flex;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 40px;
+    gap: 60px;
+    position: relative;
+    align-items: flex-start;
+}
+
+/* Sidebar Styles */
+.filters-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 100px;
+    /* Use nearly full viewport height to capture scrolls, minus header offset */
+    height: calc(100vh - 100px);
+    background: transparent;
+    padding-right: 20px;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+
+    /* Crucial for independent scrolling */
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+    padding-bottom: 40px;
+}
+
+.filters-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.filters-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.filter-group {
+    margin-bottom: 24px;
+}
+
+.group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0;
+    transition: color 0.3s;
+}
+
+.group-header:hover .category-label {
+    color: var(--text-main);
+}
+
+.category-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.category-label.active {
+    color: var(--text-main);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--color-primary);
+}
+
+.chevron {
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.group-header[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+}
+
+.group-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 12px;
+    margin-top: 8px;
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-link,
+.sidebar-sublink {
+    background: transparent;
+    border: none;
+    text-align: left;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 6px 10px;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.sidebar-link {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 20px;
+    padding-left: 0;
+}
+
+.sidebar-sublink:hover {
+    color: var(--text-main);
+    background: transparent;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--color-primary);
+}
+
+.sidebar-sublink.active {
+    color: var(--text-main);
+    background: transparent;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--color-primary);
+}
+
+/* Mobile Toggle */
+.mobile-filter-toggle {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-dark-surface);
+    padding: 10px 20px;
+    border-radius: 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin: 20px auto;
+    width: max-content;
+}
+
+.sidebar-header {
+    display: none;
+}
+
+/* Main Content Area */
+.projects-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.projects-grid.sidebar-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.no-results {
+    text-align: center;
+    padding: 80px 0;
+    color: var(--text-secondary);
+}
+
+.no-results button {
+    margin-top: 20px;
+    background: var(--color-primary);
+    border: none;
+    padding: 10px 24px;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .projects-layout {
+        display: block;
+        padding: 0 20px;
+    }
+
+    .mobile-filter-toggle {
+        display: flex;
+    }
+
+    .filters-sidebar {
+        position: fixed;
+        top: 0;
+        left: -320px;
+        width: 300px;
+        height: 100vh;
+        z-index: 1000;
+        background: var(--bg-body);
+        padding: 30px;
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
+        transition: left 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        max-height: 100vh;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .filters-sidebar.open {
+        left: 0;
+    }
+
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+    .sidebar-header h3 {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    .close-sidebar {
+        background: transparent;
+        border: none;
+        color: var(--text-main);
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .sidebar-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        z-index: 999;
+    }
+}
+
+/* Override previous hero styles */
+.projects-hero.condensed {
+    padding: 40px 20px 40px;
+    max-width: 100%;
+}
+
+.projects-hero.condensed h1 {
+    margin-bottom: 0;
+}
+
+/* --- CARD STYLES (Professional Editorial Grade) --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    cursor: pointer;
+    border: none;
+    box-shadow: none;
+
+}
+
+.project-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    background: var(--bg-surface);
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    transition: opacity 0.4s ease;
+}
+
+/* No image change on hover */
+.project-card:hover .project-image {
+    opacity: 0.9;
+}
+
+/* Content sits strictly below image - No Overlays */
+.project-content {
+    position: relative;
+    padding: 0;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    transform: none !important;
+}
+
+/* Tags look like technical specs */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.project-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    background: transparent;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Separator dots between tags */
+.project-tag:not(:last-child)::after {
+    content: '/';
+    margin-left: 12px;
+    color: var(--border-light);
+}
+
+.project-content h3 {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+    color: var(--text-main);
+    font-weight: 500;
+    line-height: 1.2;
+    transition: all 0.2s ease;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+}
+
+.project-card:hover h3 {
+    text-decoration: underline;
+    text-decoration-color: var(--color-primary);
+    color: var(--text-main);
+    /* Keep white */
+}
+
+.project-content p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 95%;
+
+    /* Always visible, no transitions */
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    margin-top: 0;
+}
+
+
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
