@@ -1,18 +1,20 @@
 import { motion } from 'framer-motion';
 import { FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import './Leadership.css';
+import alexFraylonImg from '../assets/images/alex-fraylon.jpg';
+import vigneswarImg from '../assets/images/vigneswar-nalluri.jpg';
 
 const leaders = [
     {
-        name: "Alex Fraylon",
+        name: "Ch. Ram Teja",
         role: "Chief Executive Officer",
-        image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
+        image: alexFraylonImg,
         bio: "Visionary leader with 20+ years of experience in driving global digital transformation and enterprise growth."
     },
     {
-        name: "Sarah Chen",
+        name: "Vigneswar Nalluri",
         role: "Chief Technology Officer",
-        image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=800",
+        image: vigneswarImg,
         bio: "Pioneering AI architect focused on building scalable, future-ready infrastructure for the modern enterprise."
     },
     {
