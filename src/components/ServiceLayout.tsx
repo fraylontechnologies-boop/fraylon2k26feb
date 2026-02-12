@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCheckCircle, FaCode, FaRocket, FaTools, FaLaptopCode, FaServer, FaMobileAlt, FaCloud, FaArrowRight, FaShoppingCart, FaNewspaper, FaBuilding, FaGraduationCap, FaHandHoldingHeart, FaMoneyBillWave, FaHeartbeat, FaTruck, FaHome, FaIndustry, FaReact, FaNodeJs, FaPython, FaAws, FaDocker, FaDatabase, FaWordpress, FaPhp, FaHtml5, FaCss3, FaJs, FaBrain, FaPlus, FaMinus, FaPalette, FaLayerGroup, FaGlobe, FaUserFriends, FaNetworkWired, FaLock, FaPenNib, FaBolt, FaMobile, FaCube, FaFilm, FaRobot, FaChartLine, FaLightbulb, FaShieldAlt, FaColumns, FaCommentDots, FaImage, FaBullhorn, FaSearch, FaHashtag, FaDraftingCompass, FaTree, FaLink, FaMapMarkerAlt } from 'react-icons/fa';
 import { SiKubernetes, SiGo, SiPostgresql, SiNextdotjs, SiTailwindcss, SiTypescript, SiGraphql } from 'react-icons/si';
 
 import '../pages/ServiceDetail.css';
+import type { ServiceData } from '../data/servicesData';
 
 // Map for feature icons
-const iconMap: any = {
+const iconMap: Record<string, ReactNode> = {
     'FaCode': <FaCode />,
     'FaRocket': <FaRocket />,
     'FaTools': <FaTools />,
@@ -57,7 +59,7 @@ const iconMap: any = {
     // Add others if needed
 };
 
-const getFeatureIcon = (iconInput: any) => {
+const getFeatureIcon = (iconInput: string | ReactNode) => {
     // If it's already a component (legacy), return it
     if (typeof iconInput !== 'string') return iconInput;
     // Map string to component
@@ -91,7 +93,7 @@ const getTechIcon = (tech: string) => {
     return <FaCode />;
 };
 
-const ServiceLayout = ({ data }: { data: any }) => {
+const ServiceLayout = ({ data }: { data: ServiceData }) => {
     // FAQ State
     const [activeFaq, setActiveFaq] = useState<number | null>(0); // Default open first
 
@@ -141,7 +143,7 @@ const ServiceLayout = ({ data }: { data: any }) => {
 
             {/* STATS BAR */}
             <section className="service-stats-bar">
-                {data.stats && data.stats.map((stat: any, index: number) => (
+                {data.stats && data.stats.map((stat, index) => (
                     <div key={index} className="stat-item">
                         <h3>{stat.value}</h3>
                         <p>{stat.label}</p>
@@ -156,7 +158,7 @@ const ServiceLayout = ({ data }: { data: any }) => {
                     <p style={{ color: 'var(--text-secondary)' }}>Everything you need to succeed, built right in.</p>
                 </div>
                 <div className="features-grid">
-                    {data.features && data.features.map((feature: any, index: number) => (
+                    {data.features && data.features.map((feature, index) => (
                         <div key={index} className="feature-card">
                             <div className="feature-icon">{getFeatureIcon(feature.icon)}</div>
                             <h4>{feature.title}</h4>
@@ -173,7 +175,7 @@ const ServiceLayout = ({ data }: { data: any }) => {
                     <p style={{ color: 'var(--text-secondary)' }}>Tangible business value delivered.</p>
                 </div>
                 <div className="benefits-grid">
-                    {data.benefits && data.benefits.map((benefit: any, index: number) => (
+                    {data.benefits && data.benefits.map((benefit, index) => (
                         <div key={index} className="benefit-card">
                             <div className="benefit-number">0{index + 1}</div>
                             <h4>{benefit.title}</h4>
@@ -190,7 +192,7 @@ const ServiceLayout = ({ data }: { data: any }) => {
                     <p style={{ color: 'var(--text-secondary)' }}>A proven workflow for predictable results.</p>
                 </div>
                 <div className="process-timeline">
-                    {data.process && data.process.map((step: any, index: number) => (
+                    {data.process && data.process.map((step, index) => (
                         <div key={index} className="process-step">
                             <span className="step-number">{step.step}</span>
                             <div className="step-content">
@@ -215,7 +217,7 @@ const ServiceLayout = ({ data }: { data: any }) => {
                         </Link>
                     </div>
                     <div className="projects-grid">
-                        {data.projects.map((project: any, index: number) => (
+                        {data.projects.map((project, index) => (
                             <div key={index} className="project-card">
                                 <div className="project-image-wrapper">
                                     <img src={project.image} alt={project.title} className="project-image" />
@@ -267,7 +269,7 @@ const ServiceLayout = ({ data }: { data: any }) => {
                     </div>
 
                     <div className="faq-list-side">
-                        {data.faq && data.faq.map((item: any, index: number) => (
+                        {data.faq && data.faq.map((item, index) => (
                             <div
                                 key={index}
                                 className={`faq-card ${activeFaq === index ? 'active' : ''}`}

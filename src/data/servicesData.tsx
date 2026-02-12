@@ -1,7 +1,32 @@
 // Icons are now mapped in ServiceLayout.tsx
 
 
-export const servicesData: any = {
+export interface Project {
+    title: string;
+    desc: string;
+    image: string;
+    tags: string[];
+    link: string;
+    category?: string; // Enhanced property for filtering
+    serviceId?: string; // Enhanced property for filtering
+}
+
+export interface ServiceData {
+    title: string;
+    subtitle: string;
+    badge: string;
+    heroImage: string;
+    stats: { value: string; label: string }[];
+    features: { icon: string; title: string; desc: string }[];
+    techStack: string[];
+    process: { step: string; title: string; desc: string }[];
+    benefits: { title: string; desc: string }[];
+    industries: string[];
+    projects: Project[];
+    faq: { q: string; a: string }[];
+}
+
+export const servicesData: Record<string, ServiceData> = {
     'wordpress': {
         title: 'Enterprise WordPress Development',
         subtitle: 'Scalable, secure, and high-performance WordPress solutions designed for modern enterprises, not just blogs.',

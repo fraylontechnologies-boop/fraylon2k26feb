@@ -2,10 +2,12 @@ import { FaCloud, FaDatabase, FaBrain, FaCogs, FaShieldAlt, FaTruck } from 'reac
 import { SiSap, SiOracle } from 'react-icons/si';
 import { FaUserTie, FaNetworkWired, FaLock, FaBalanceScale } from 'react-icons/fa';
 
+import type { IconType } from 'react-icons';
+
 export interface SolutionData {
     title: string;
     description: string;
-    icon: any;
+    icon: IconType;
     capabilities: { title: string; desc: string }[];
     benefits: string[];
     techStack: string[];
@@ -17,7 +19,7 @@ export interface SolutionData {
     comparison: { feature: string; fraylon: string; others: string }[];
     challenge: { title: string; problem: string; solution: string; outcome: string };
     architecture: { title: string; description: string; highlights: string[] };
-    detailedFeatures?: { title: string; desc: string; icon?: any }[];
+    detailedFeatures?: { title: string; desc: string; icon?: IconType }[];
     faq: { question: string; answer: string }[];
 }
 

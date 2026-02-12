@@ -1,9 +1,10 @@
 import { FaLandmark, FaHeartbeat, FaIndustry, FaShoppingCart, FaLightbulb, FaBuilding, FaPlane, FaBroadcastTower, FaFilm, FaMicrochip, FaFlask, FaCar, FaCreditCard, FaChartLine, FaUmbrella } from 'react-icons/fa';
+import type { IconType } from 'react-icons';
 
 export interface IndustryData {
     title: string;
     description: string;
-    icon: any;
+    icon: IconType;
     challenges: { title: string; desc: string }[];
     solutions: { title: string; desc: string }[];
     stats: { value: string; label: string }[];
