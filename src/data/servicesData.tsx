@@ -1903,6 +1903,29 @@ export const servicesData: Record<string, ServiceData> = {
             { title: 'Future Proof', desc: 'Solutions built with scalability and maintenance in mind.' }
         ],
         industries: ['Technology', 'Finance', 'Retail', 'Healthcare', 'Energy'],
+        projects: [
+            {
+                title: 'Global Tech Solution',
+                desc: 'A scalable enterprise platform serving millions of users worldwide.',
+                image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                tags: ['Enterprise', 'Cloud', 'Scale'],
+                link: '/work/global-tech'
+            },
+            {
+                title: 'Finance Dashboard',
+                desc: 'Real-time analytics and reporting tool for a major financial institution.',
+                image: 'https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                tags: ['Finance', 'Analytics', 'React'],
+                link: '/work/finance-dash'
+            },
+            {
+                title: 'Healthcare Portal',
+                desc: 'Secure patient management system connecting doctors and patients.',
+                image: 'https://images.pexels.com/photos/4226119/pexels-photo-4226119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                tags: ['Healthcare', 'Security', 'Portal'],
+                link: '/work/healthcare-portal'
+            }
+        ],
         faq: [
             { q: 'How do run projects?', a: 'We follow Agile methodologies with 2-week sprints to ensure flexibility and rapid delivery.' },
             { q: 'What is your pricing model?', a: 'We offer both time-and-materials and fixed-price contracts depending on project clarity.' },
