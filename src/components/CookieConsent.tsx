@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 // 1. Google Analytics Configuration
 const GA_MEASUREMENT_ID = 'G-HZJFC48148';
@@ -41,7 +41,8 @@ const CookieConsent: React.FC = () => {
   };
 
   useEffect(() => {
-    const storedConsent = localStorage.getItem('cookieConsent');
+    // Check for existing cookie
+    const storedConsent = Cookies.get('cookieConsent');
 
     if (!storedConsent) {
       // No consent yet -> Show banner
@@ -66,7 +67,7 @@ const CookieConsent: React.FC = () => {
 
   const handleAcceptAll = () => {
     const allAccepted = { necessary: true, analytics: true, marketing: true };
-    localStorage.setItem('cookieConsent', JSON.stringify(allAccepted));
+    Cookies.set('cookieConsent', JSON.stringify(allAccepted), { expires: 365, secure: true, sameSite: 'Strict' });
     setPreferences(allAccepted);
     setIsVisible(false);
 
@@ -75,7 +76,7 @@ const CookieConsent: React.FC = () => {
   };
 
   const handleSavePreferences = () => {
-    localStorage.setItem('cookieConsent', JSON.stringify(preferences));
+    Cookies.set('cookieConsent', JSON.stringify(preferences), { expires: 365, secure: true, sameSite: 'Strict' });
     setIsVisible(false);
     setShowSettings(false);
 
