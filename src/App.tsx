@@ -4,6 +4,7 @@ import SmoothScroll from './components/SmoothScroll';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Footer from './components/Footer';
+import CookieConsent from './components/CookieConsent';
 import Insights from './pages/Insights';
 import InsightDetail from './pages/InsightDetail';
 import Careers from './pages/Careers';
@@ -127,6 +128,7 @@ function App() {
         </AnimatePresence>
         <Footer />
       </div>
+      <CookieConsent />
     </>
   );
 }

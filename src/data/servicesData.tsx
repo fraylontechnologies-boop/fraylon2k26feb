@@ -1,7 +1,32 @@
 // Icons are now mapped in ServiceLayout.tsx
 
 
-export const servicesData: any = {
+export interface Project {
+    title: string;
+    desc: string;
+    image: string;
+    tags: string[];
+    link: string;
+    category?: string; // Enhanced property for filtering
+    serviceId?: string; // Enhanced property for filtering
+}
+
+export interface ServiceData {
+    title: string;
+    subtitle: string;
+    badge: string;
+    heroImage: string;
+    stats: { value: string; label: string }[];
+    features: { icon: string; title: string; desc: string }[];
+    techStack: string[];
+    process: { step: string; title: string; desc: string }[];
+    benefits: { title: string; desc: string }[];
+    industries: string[];
+    projects: Project[];
+    faq: { q: string; a: string }[];
+}
+
+export const servicesData: Record<string, ServiceData> = {
     'wordpress': {
         title: 'Enterprise WordPress Development',
         subtitle: 'Scalable, secure, and high-performance WordPress solutions designed for modern enterprises, not just blogs.',
@@ -1878,6 +1903,29 @@ export const servicesData: any = {
             { title: 'Future Proof', desc: 'Solutions built with scalability and maintenance in mind.' }
         ],
         industries: ['Technology', 'Finance', 'Retail', 'Healthcare', 'Energy'],
+        projects: [
+            {
+                title: 'Global Tech Solution',
+                desc: 'A scalable enterprise platform serving millions of users worldwide.',
+                image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                tags: ['Enterprise', 'Cloud', 'Scale'],
+                link: '/work/global-tech'
+            },
+            {
+                title: 'Finance Dashboard',
+                desc: 'Real-time analytics and reporting tool for a major financial institution.',
+                image: 'https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                tags: ['Finance', 'Analytics', 'React'],
+                link: '/work/finance-dash'
+            },
+            {
+                title: 'Healthcare Portal',
+                desc: 'Secure patient management system connecting doctors and patients.',
+                image: 'https://images.pexels.com/photos/4226119/pexels-photo-4226119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                tags: ['Healthcare', 'Security', 'Portal'],
+                link: '/work/healthcare-portal'
+            }
+        ],
         faq: [
             { q: 'How do run projects?', a: 'We follow Agile methodologies with 2-week sprints to ensure flexibility and rapid delivery.' },
             { q: 'What is your pricing model?', a: 'We offer both time-and-materials and fixed-price contracts depending on project clarity.' },

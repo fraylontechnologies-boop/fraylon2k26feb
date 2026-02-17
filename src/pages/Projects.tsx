@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaFilter, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { servicesData } from '../data/servicesData';
+import type { ServiceData, Project } from '../data/servicesData';
 import './Projects.css';
 
 // Define the hierarchy based on the user's request
@@ -105,11 +106,11 @@ const Projects = () => {
 
     // Aggregate projects
     const allProjects = useMemo(() => {
-        return Object.entries(servicesData).reduce((acc: any[], [key, service]: [string, any]) => {
+        return Object.entries(servicesData).reduce((acc: Project[], [key, service]: [string, ServiceData]) => {
             if (service.projects) {
                 const category = serviceCategoryMap[key] || 'Other';
                 // Add serviceId and category to each project for filtering
-                const enrichedProjects = service.projects.map((p: any) => ({
+                const enrichedProjects = service.projects.map((p) => ({
                     ...p,
                     serviceId: key,
                     category: category
@@ -122,8 +123,8 @@ const Projects = () => {
 
     // De-duplicate
     const uniqueProjects = useMemo(() => {
-        return Array.from(new Set(allProjects.map((p: any) => p.title)))
-            .map(title => allProjects.find((p: any) => p.title === title));
+        return Array.from(new Set(allProjects.map((p) => p.title)))
+            .map(title => allProjects.find((p) => p.title === title));
     }, [allProjects]);
 
     // Filter Logic
@@ -136,14 +137,14 @@ const Projects = () => {
 
         if (isCategory) {
             // Get all projects belonging to this category from the raw list
-            const categoryProjects = allProjects.filter((p: any) => p.category === activeFilter);
+            const categoryProjects = allProjects.filter((p) => p.category === activeFilter);
             // Deduplicate by title within the category to avoid showing the same project twice if it's in multiple services of the same category
-            return Array.from(new Set(categoryProjects.map((p: any) => p.title)))
-                .map(title => categoryProjects.find((p: any) => p.title === title));
+            return Array.from(new Set(categoryProjects.map((p) => p.title)))
+                .map(title => categoryProjects.find((p) => p.title === title));
         } else {
             // Precise matching: Get projects explicitly listed under this Service ID
             // We use 'allProjects' here so we find the project entry even if it was deduped out of 'uniqueProjects'
-            return allProjects.filter((p: any) => p.serviceId === activeFilter);
+            return allProjects.filter((p) => p.serviceId === activeFilter);
         }
     }, [activeFilter, uniqueProjects, allProjects]);
 
@@ -228,31 +229,33 @@ const Projects = () => {
                 <main className="projects-main">
                     <motion.div layout className="projects-grid sidebar-grid">
                         <AnimatePresence mode='popLayout'>
-                            {filteredProjects.map((project: any) => (
-                                <motion.div
-                                    layout
-                                    key={project.title}
-                                    className="project-card"
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.3 }}
-                                    onClick={() => navigate(project.link)}
-                                >
-                                    <div className="project-image-wrapper">
-                                        <img src={project.image} alt={project.title} className="project-image" />
-                                    </div>
-                                    <div className="project-content">
-                                        <div className="project-tags">
-                                            {project.tags && project.tags.slice(0, 3).map((tag: string, i: number) => (
-                                                <span key={i} className="project-tag">{tag}</span>
-                                            ))}
+                            {filteredProjects.map((project: Project | undefined) => (
+                                project ? (
+                                    <motion.div
+                                        layout
+                                        key={project.title}
+                                        className="project-card"
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        transition={{ duration: 0.3 }}
+                                        onClick={() => navigate(project.link)}
+                                    >
+                                        <div className="project-image-wrapper">
+                                            <img src={project.image} alt={project.title} className="project-image" />
                                         </div>
-                                        <h3>{project.title}</h3>
-                                        <p>{project.desc}</p>
-                                    </div>
+                                        <div className="project-content">
+                                            <div className="project-tags">
+                                                {project.tags && project.tags.slice(0, 3).map((tag: string, i: number) => (
+                                                    <span key={i} className="project-tag">{tag}</span>
+                                                ))}
+                                            </div>
+                                            <h3>{project.title}</h3>
+                                            <p>{project.desc}</p>
+                                        </div>
 
-                                </motion.div>
+                                    </motion.div>
+                                ) : null
                             ))}
                         </AnimatePresence>
                     </motion.div>

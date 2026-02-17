@@ -1,10 +1,19 @@
 import { useRef } from 'react';
+import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { FaCloud, FaBrain, FaShieldAlt, FaCode, FaChartLine, FaMobileAlt, FaArrowRight } from 'react-icons/fa';
 import './Services.css';
 
-const services = [
+interface ServiceItem {
+    icon: ReactNode;
+    title: string;
+    desc: string;
+    image: string;
+    link: string;
+}
+
+const services: ServiceItem[] = [
     {
         icon: <FaCloud />,
         title: "Cloud Infrastructure",
@@ -49,7 +58,7 @@ const services = [
     }
 ];
 
-const ServiceCard = ({ service, index }: { service: any, index: number }) => {
+const ServiceCard = ({ service, index }: { service: ServiceItem, index: number }) => {
     const ref = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: ref,

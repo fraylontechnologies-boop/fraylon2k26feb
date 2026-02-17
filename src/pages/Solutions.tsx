@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
+import type { IconType } from 'react-icons';
 import { FaArrowRight, FaQuoteLeft, FaCertificate, FaPlay, FaExclamationCircle, FaCheckCircle } from 'react-icons/fa';
 import { VscAzure } from 'react-icons/vsc';
 import { SiAmazonwebservices, SiGooglecloud, SiTerraform, SiKubernetes, SiPrometheus, SiDatadog, SiSnowflake, SiDatabricks, SiDbt, SiApacheairflow, SiApachekafka, SiLooker, SiPython, SiPytorch, SiTensorflow, SiHuggingface, SiOpencv, SiNvidia, SiSap, SiOracle, SiTableau, SiCisco, SiAnsible, SiSplunk, SiPaloaltonetworks, SiWireshark, SiFortinet, SiArgo, SiUipath } from 'react-icons/si';
@@ -82,7 +83,7 @@ const Solutions = () => {
 
 
     // Tech Stack Icon Mapping with Brand Colors
-    const techIconMap: Record<string, { icon?: any, image?: string, color: string }> = {
+    const techIconMap: Record<string, { icon?: IconType, image?: string, color: string }> = {
         'AWS': { icon: SiAmazonwebservices, color: '#232F3E' },
         'GCP': { icon: SiGooglecloud, color: '#4285F4' },
         'Terraform': { icon: SiTerraform, color: '#7B42BC' },
