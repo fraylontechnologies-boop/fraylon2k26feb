@@ -11,7 +11,7 @@ import {
   FaChartLine, FaStore, FaHeartbeat, FaDna, FaPlane, FaIndustry, FaCar, FaBolt,
   FaFlask, FaBroadcastTower, FaFilm, FaMicrochip, FaLandmark, FaComment,
   FaInfoCircle, FaUserTie, FaHandshake, FaNewspaper,
-  FaBars, FaTimes, FaChevronDown, FaChevronUp, FaChevronRight, FaLinkedin, FaFacebook, FaInstagram
+  FaBars, FaTimes, FaChevronDown, FaChevronRight, FaLinkedin, FaFacebook, FaInstagram, FaPlus, FaMinus, FaChevronLeft
 } from 'react-icons/fa';
 import { SiWebflow, SiFramer, SiSap, SiOracle } from 'react-icons/si';
 import './Navbar.css';
@@ -20,7 +20,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [mobileActivePanel, setMobileActivePanel] = useState<string>('main');
+  const [mobileSubExpanded, setMobileSubExpanded] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,15 +46,35 @@ const Navbar = () => {
   const closeMenu = () => {
     setActiveMenu(null);
     setMobileMenuOpen(false);
-    setMobileExpanded(null);
+    setTimeout(() => {
+      setMobileActivePanel('main');
+      setMobileSubExpanded(null);
+    }, 300);
   };
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const toggleMobileExpand = (menu: string) => {
-    setMobileExpanded(mobileExpanded === menu ? null : menu);
+  const renderSubAccordion = (id: string, title: string, links: { to: string, label: string }[]) => {
+    const isExpanded = mobileSubExpanded === id;
+    return (
+      <div className="mobile-sub-accordion">
+        <div className={`mobile-sub-accordion-header ${isExpanded ? 'expanded' : ''}`} onClick={() => setMobileSubExpanded(isExpanded ? null : id)}>
+          <span>{title}</span>
+          {isExpanded ? <FaMinus className="sub-acc-icon" /> : <FaPlus className="sub-acc-icon" />}
+        </div>
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div className="mobile-sub-accordion-body" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden' }}>
+              {links.map((link, idx) => (
+                <Link key={idx} to={link.to} onClick={closeMenu}>{link.label}</Link>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    );
   };
 
   return (
@@ -298,112 +319,175 @@ const Navbar = () => {
             transition={{ type: "tween", duration: 0.3 }}
           >
             <div className="mobile-menu-topbar">
-              <button className="mobile-close-btn" onClick={closeMenu}>
-                <FaTimes />
-              </button>
-              <div className="mobile-lang-selector">
-                <FaGlobe style={{ marginRight: '6px' }} /> India <FaChevronDown style={{ fontSize: '0.7em', marginLeft: '6px' }} />
+              {mobileActivePanel !== 'main' ? (
+                <button className="mobile-back-btn" onClick={() => { setMobileActivePanel('main'); setMobileSubExpanded(null); }}>
+                  <FaChevronLeft style={{ marginRight: '8px', fontSize: '0.8rem' }} /> Back
+                </button>
+              ) : (
+                <div style={{ width: '20px' }}></div>
+              )}
+              <div className="mobile-topbar-right">
+                <div className="mobile-lang-selector">
+                  <FaGlobe style={{ marginRight: '6px' }} /> India <FaChevronDown style={{ fontSize: '0.7em', marginLeft: '6px' }} />
+                </div>
+                <div className="topbar-divider"></div>
+                <button className="mobile-close-btn" onClick={closeMenu}>
+                  <FaTimes />
+                </button>
               </div>
             </div>
 
             <div className="mobile-menu-content-wrapper">
-              <div className="mobile-menu-content">
+              <AnimatePresence mode="wait">
+                {mobileActivePanel === 'main' && (
+                  <motion.div
+                    key="main"
+                    className="mobile-menu-content"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="mobile-accordion">
+                      <div className="mobile-accordion-header" onClick={() => setMobileActivePanel('services')}>
+                        <span>What we do</span>
+                        <FaChevronRight className="mobile-chevron" />
+                      </div>
+                    </div>
+                    <div className="mobile-accordion">
+                      <div className="mobile-accordion-header" onClick={() => setMobileActivePanel('solutions')}>
+                        <span>What we think</span>
+                        <FaChevronRight className="mobile-chevron" />
+                      </div>
+                    </div>
+                    <div className="mobile-accordion">
+                      <div className="mobile-accordion-header" onClick={() => setMobileActivePanel('company')}>
+                        <span>Who we are</span>
+                        <FaChevronRight className="mobile-chevron" />
+                      </div>
+                    </div>
+                    <div className="mobile-accordion">
+                      <Link to="/careers" className="mobile-accordion-header" style={{ textDecoration: 'none' }} onClick={closeMenu}>
+                        <span>Careers</span>
+                        <FaChevronRight className="mobile-chevron" />
+                      </Link>
+                    </div>
 
-                <div className="mobile-accordion">
-                  <div className={`mobile-accordion-header ${mobileExpanded === 'services' ? 'expanded' : ''}`} onClick={() => toggleMobileExpand('services')}>
-                    <span>Services</span>
-                    <FaChevronRight className="mobile-chevron" />
-                  </div>
-                  <AnimatePresence>
-                    {mobileExpanded === 'services' && (
-                      <motion.div
-                        className="mobile-accordion-body"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        style={{ overflow: 'hidden' }}
-                      >
-                        <Link to="/services/software-dev" onClick={closeMenu}>Custom Software</Link>
-                        <Link to="/services/ai-integration" onClick={closeMenu}>AI & Data</Link>
-                        <Link to="/services/ui-ux" onClick={closeMenu}>Design</Link>
-                        <Link to="/services/digital-transformation" onClick={closeMenu}>IT Solutions</Link>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                    <div className="mobile-menu-spacer"></div>
 
-                <div className="mobile-accordion">
-                  <div className={`mobile-accordion-header ${mobileExpanded === 'solutions' ? 'expanded' : ''}`} onClick={() => toggleMobileExpand('solutions')}>
-                    <span>Solutions</span>
-                    <FaChevronRight className="mobile-chevron" />
-                  </div>
-                  <AnimatePresence>
-                    {mobileExpanded === 'solutions' && (
-                      <motion.div
-                        className="mobile-accordion-body"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        style={{ overflow: 'hidden' }}
-                      >
-                        <Link to="/solutions/cloud" onClick={closeMenu}>Cloud</Link>
-                        <Link to="/solutions/ai" onClick={closeMenu}>AI Solutions</Link>
-                        <Link to="/ind/banking" onClick={closeMenu}>Industries</Link>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                    <div className="mobile-secondary-links">
+                      <Link to="/contact" onClick={closeMenu}>Contact Us</Link>
+                      <Link to="/careers" onClick={closeMenu}>Careers</Link>
+                      <Link to="/about" onClick={closeMenu}>Locations</Link>
+                    </div>
 
-                <div className="mobile-accordion">
-                  <div className={`mobile-accordion-header ${mobileExpanded === 'company' ? 'expanded' : ''}`} onClick={() => toggleMobileExpand('company')}>
-                    <span>Company</span>
-                    <FaChevronRight className="mobile-chevron" />
-                  </div>
-                  <AnimatePresence>
-                    {mobileExpanded === 'company' && (
-                      <motion.div
-                        className="mobile-accordion-body"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        style={{ overflow: 'hidden' }}
-                      >
-                        <Link to="/about" onClick={closeMenu}>About Us</Link>
-                        <Link to="/leadership" onClick={closeMenu}>Leadership</Link>
-                        <Link to="/partners" onClick={closeMenu}>Partners</Link>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                    <div className="mobile-social-icons">
+                      <a href="https://linkedin.com" target="_blank" rel="noreferrer"><FaLinkedin /></a>
+                      <a href="https://facebook.com" target="_blank" rel="noreferrer"><FaFacebook /></a>
+                      <a href="https://instagram.com" target="_blank" rel="noreferrer"><FaInstagram /></a>
+                    </div>
+                  </motion.div>
+                )}
 
-                <div className="mobile-accordion">
-                  <Link to="/insights" className="mobile-accordion-header" style={{ textDecoration: 'none' }} onClick={closeMenu}>
-                    <span>Insights</span>
-                    <FaChevronRight className="mobile-chevron" />
-                  </Link>
-                </div>
+                {mobileActivePanel === 'services' && (
+                  <motion.div
+                    key="services"
+                    className="mobile-menu-content"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="mobile-panel-header-section">
+                      <h2>Services</h2>
+                      <p>Fraylon helps clients create long-term value for all stakeholders. Enabled by data and technology, our services and solutions provide trust through assurance and help clients transform, grow and operate.</p>
+                      <Link to="/services/digital-transformation" onClick={closeMenu} className="mobile-explore-btn">Explore</Link>
+                    </div>
 
-                <div className="mobile-accordion">
-                  <Link to="/careers" className="mobile-accordion-header" style={{ textDecoration: 'none' }} onClick={closeMenu}>
-                    <span>Careers</span>
-                    <FaChevronRight className="mobile-chevron" />
-                  </Link>
-                </div>
+                    <div className="mobile-sub-accordion-list">
+                      {renderSubAccordion('nocode', 'No Code Development', [
+                        { to: '/services/wordpress', label: 'WordPress Development' },
+                        { to: '/services/webflow', label: 'Webflow Development' },
+                        { to: '/services/wix', label: 'Wix Development' },
+                        { to: '/services/shopify', label: 'Shopify Development' },
+                        { to: '/services/framer', label: 'Framer Development' }
+                      ])}
+                      {renderSubAccordion('custom', 'Custom Development', [
+                        { to: '/services/software-dev', label: 'Software Development' },
+                        { to: '/services/web-app-dev', label: 'Web Application Development' },
+                        { to: '/services/ecommerce', label: 'eCommerce Website Dev' }
+                      ])}
+                      {renderSubAccordion('ai', 'AI & Data Science', [
+                        { to: '/services/ai-integration', label: 'AI Integration & Strategy' },
+                        { to: '/services/ai-agents', label: 'AI Agents Development' }
+                      ])}
+                      {renderSubAccordion('design', 'Design Services', [
+                        { to: '/services/ui-ux', label: 'UI/UX & Product Design' },
+                        { to: '/services/branding', label: 'Branding & Visual Identity' }
+                      ])}
+                    </div>
+                  </motion.div>
+                )}
 
-                <div className="mobile-menu-spacer"></div>
+                {mobileActivePanel === 'solutions' && (
+                  <motion.div
+                    key="solutions"
+                    className="mobile-menu-content"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="mobile-panel-header-section">
+                      <h2>Solutions</h2>
+                      <p>Modernizing core systems with scalable microservices and cloud-native architectures for the future-proof enterprise.</p>
+                      <Link to="/solutions/cloud" onClick={closeMenu} className="mobile-explore-btn">Explore</Link>
+                    </div>
 
-                <div className="mobile-secondary-links">
-                  <Link to="/contact" onClick={closeMenu}>Contact Us</Link>
-                  <Link to="/careers" onClick={closeMenu}>Careers</Link>
-                  <Link to="/about" onClick={closeMenu}>Locations</Link>
-                </div>
+                    <div className="mobile-sub-accordion-list">
+                      {renderSubAccordion('core', 'Core Solutions', [
+                        { to: '/solutions/cloud', label: 'Cloud Transformation' },
+                        { to: '/solutions/data', label: 'Data & Analytics' },
+                        { to: '/solutions/ai', label: 'Artificial Intelligence' }
+                      ])}
+                      {renderSubAccordion('ind1', 'Financial Services', [
+                        { to: '/ind/banking', label: 'Banking & Capital Markets' },
+                        { to: '/ind/insurance', label: 'Insurance' }
+                      ])}
+                      {renderSubAccordion('ind2', 'Consumer & Health', [
+                        { to: '/ind/retail', label: 'Retail & Consumer Goods' },
+                        { to: '/ind/health', label: 'Healthcare Payers' }
+                      ])}
+                    </div>
+                  </motion.div>
+                )}
 
-                <div className="mobile-social-icons">
-                  <a href="https://linkedin.com" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-                  <a href="https://facebook.com" target="_blank" rel="noreferrer"><FaFacebook /></a>
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer"><FaInstagram /></a>
-                </div>
-              </div>
+                {mobileActivePanel === 'company' && (
+                  <motion.div
+                    key="company"
+                    className="mobile-menu-content"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="mobile-panel-header-section">
+                      <h2>Company</h2>
+                      <p>Discover our core values, leadership, and global presence as we engineer the future of digital business.</p>
+                      <Link to="/about" onClick={closeMenu} className="mobile-explore-btn">Explore</Link>
+                    </div>
+
+                    <div className="mobile-sub-accordion-list">
+                      {renderSubAccordion('who', 'Who We Are', [
+                        { to: '/about', label: 'About Fraylon' },
+                        { to: '/leadership', label: 'Leadership Team' },
+                        { to: '/partners', label: 'Strategic Partners' },
+                        { to: '/news', label: 'News & Media' }
+                      ])}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
         )}
