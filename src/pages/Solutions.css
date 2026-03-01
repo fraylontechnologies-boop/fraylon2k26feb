@@ -35,6 +35,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
+    position: relative;
+    /* Fix for framer-motion scroll calculations */
 }
 
 .solution-card-link {
@@ -48,9 +50,12 @@
     padding: 40px;
     border-radius: 0;
     height: 100%;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    opacity: 0;
+    /* Base state to match Framer's initial */
+    will-change: opacity, transform;
 }
 
 .solution-card:hover {
@@ -80,18 +85,18 @@
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transform: translate3d(30%, 30%, 0);
+    transform: none;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
         opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: none;
     z-index: 1;
     filter: brightness(0.4);
     will-change: transform, opacity;
+    /* Promote to GPU layer */
 }
 
 .solution-card:hover .solution-bg-image {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
 }
 
 /* Detail Mode (Specific Solution) */
@@ -159,7 +164,6 @@
 }
 
 .capability-card:hover {
-    transform: translateY(-5px);
     background: #fff;
     box-shadow: var(--shadow-sm);
     border-color: var(--color-primary);
@@ -330,7 +334,6 @@
 }
 
 .case-card:hover {
-    transform: translateY(-5px);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -422,13 +425,12 @@
     background: rgba(255, 255, 255, 0.08);
     color: #fff;
     border-color: var(--color-primary);
-    transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .tech-tag:hover .tech-logo-img,
 .tech-tag:hover .brand-icon {
-    transform: scale(1.1);
+    opacity: 1;
 }
 
 /* Responsive Update */
@@ -698,7 +700,6 @@
 .play-demo-btn:hover {
     background: var(--color-primary);
     border-color: var(--color-primary);
-    transform: translateY(-2px);
 }
 
 

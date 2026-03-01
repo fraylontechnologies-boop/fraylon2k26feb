@@ -76,7 +76,7 @@
 }
 
 .map-point:hover {
-    transform: translate(-50%, -50%) scale(2.5);
+    transform: translate(-50%, -50%);
     background: var(--color-brand-navy);
     z-index: 15;
 }
@@ -85,8 +85,7 @@
     position: absolute;
     bottom: 12px;
     left: 50%;
-    transform: translateX(-50%) scale(0.4);
-    /* Counteracts parent 2.5x scale (1/2.5 = 0.4) */
+    transform: translateX(-50%) scale(1);
     background: #fff;
     color: #000;
     padding: 8px 16px;
@@ -105,8 +104,6 @@
 .map-point:hover .tooltip {
     opacity: 1;
     visibility: visible;
-    bottom: 25px;
-    transform: translateX(-50%) scale(0.4);
 }
 
 .map-point::after {
@@ -196,7 +193,7 @@
     line-height: 1;
     margin-bottom: 5px;
     color: var(--text-main);
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .impact-stat-card p {

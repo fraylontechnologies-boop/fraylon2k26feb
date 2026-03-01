@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
   /* Logo-Derived Palette */
@@ -58,7 +58,7 @@ button {
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: var(--bg-body);
   color: var(--text-main);
   line-height: 1.6;
@@ -74,7 +74,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Inter', sans-serif;
   letter-spacing: -0.02em;
   font-weight: 700;
   color: var(--text-main);
@@ -99,7 +99,7 @@ h6 {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   text-transform: uppercase;
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Inter', sans-serif;
   gap: 10px;
 }
 

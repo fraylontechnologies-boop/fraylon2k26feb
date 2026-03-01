@@ -28,8 +28,8 @@ const Insights = () => {
                 {/* Main Feature */}
                 <motion.div
                     className="insight-large"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                 >
                     <Link to={`/insights/${mainInsight?.id}`} className="insight-link-wrapper">
@@ -47,8 +47,8 @@ const Insights = () => {
                 {/* Tall Feature */}
                 <motion.div
                     className="insight-tall"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
                 >
@@ -64,8 +64,8 @@ const Insights = () => {
                 {/* Small Feature 1 */}
                 <motion.div
                     className="insight-small"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                 >
@@ -82,8 +82,8 @@ const Insights = () => {
                 {/* Small Feature 2 */}
                 <motion.div
                     className="insight-small"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
                 >

@@ -15,13 +15,13 @@ const Contact = () => {
                 </div>
                 <div className="cta-actions">
                     <Link to="/partners">
-                        <button className="btn btn-primary" style={{ padding: '20px 40px', fontSize: '1rem' }}>
+                        <button className="btn btn-primary">
                             Partner With Us
                         </button>
                     </Link>
                     <Link to="/contact">
-                        <button className="btn btn-outline" style={{ padding: '20px 40px', fontSize: '1rem' }}>
-                            Contact Sales <FaArrowRight style={{ marginLeft: '10px' }} />
+                        <button className="btn btn-outline">
+                            Contact Sales <FaArrowRight className="btn-icon-right" />
                         </button>
                     </Link>
                 </div>

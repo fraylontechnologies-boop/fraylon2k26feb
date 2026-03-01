@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const articles = [
     {
@@ -53,7 +54,7 @@ const NewsMedia = () => {
                             transition={{ delay: index * 0.1 }}
                             viewport={{ once: true }}
                             style={{ background: '#fff', borderRadius: '12px', overflow: 'hidden', cursor: 'pointer', transition: 'box-shadow 0.3s' }}
-                            whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
+                            whileHover={{ boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
                         >
                             <div style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
                                 <img src={item.image} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -69,7 +70,9 @@ const NewsMedia = () => {
                                 <span style={{ color: '#94a3b8', fontSize: '0.85rem' }}>{item.date}</span>
                                 <h3 style={{ margin: '15px 0', fontSize: '1.4rem', color: '#0f172a' }}>{item.title}</h3>
                                 <p style={{ color: '#64748b', lineHeight: '1.6', fontSize: '0.95rem' }}>{item.excerpt}</p>
-                                <span style={{ color: '#00c6a5', fontWeight: 'bold', fontSize: '0.9rem', marginTop: '10px', display: 'inline-block' }}>Read Story &rarr;</span>
+                                <Link to="/contact" style={{ color: '#00c6a5', fontWeight: 'bold', fontSize: '0.9rem', marginTop: '10px', display: 'inline-block', textDecoration: 'none' }}>
+                                    Read Story &rarr;
+                                </Link>
                             </div>
                         </motion.div>
                     ))}

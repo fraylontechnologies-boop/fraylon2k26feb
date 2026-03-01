@@ -100,21 +100,21 @@ const About = () => {
                         <h2 className="story-heading">Driven by values, defined by results.</h2>
                     </div>
                     <div className="values-grid">
-                        <motion.div className="value-card" whileHover={{ y: -10 }}>
+                        <div className="value-card">
                             <FaLightbulb className="value-icon" />
                             <h3>Innovation First</h3>
                             <p>We believe in challenging the status quo. We don't just follow trends; we set them by experimenting with emerging technologies.</p>
-                        </motion.div>
-                        <motion.div className="value-card" whileHover={{ y: -10 }}>
+                        </div>
+                        <div className="value-card">
                             <FaShieldAlt className="value-icon" />
                             <h3>Radical Integrity</h3>
                             <p>Trust is our currency. We are transparent in our processes, honest in our advice, and accountable for our results.</p>
-                        </motion.div>
-                        <motion.div className="value-card" whileHover={{ y: -10 }}>
+                        </div>
+                        <div className="value-card">
                             <FaUsers className="value-icon" />
                             <h3>Client Obsession</h3>
                             <p>We measure our success by the success of our clients. We embed ourselves in your teams to truly understand your challenges.</p>
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -141,7 +141,6 @@ const About = () => {
                         <MotionLink
                             to="/careers"
                             className="btn"
-                            whileHover={{ backgroundColor: '#00dcb7' }}
                             whileTap={{ scale: 0.98 }}
                             style={{
                                 background: '#00c6a5',
@@ -164,7 +163,6 @@ const About = () => {
                         <MotionLink
                             to="/leadership"
                             className="btn-outline"
-                            whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
                             whileTap={{ scale: 0.98 }}
                             style={{
                                 borderColor: '#fff',

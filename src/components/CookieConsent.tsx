@@ -9,10 +9,17 @@ const CookieConsent: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
-  const [preferences, setPreferences] = useState({
-    necessary: true,
-    analytics: false,
-    marketing: false
+  const [preferences, setPreferences] = useState(() => {
+    const storedConsent = Cookies.get('cookieConsent');
+    if (storedConsent) {
+      try {
+        const parsed = JSON.parse(storedConsent);
+        return { necessary: true, analytics: !!parsed.analytics, marketing: !!parsed.marketing };
+      } catch (e) {
+        console.error('Error parsing cookie preferences', e);
+      }
+    }
+    return { necessary: true, analytics: false, marketing: false };
   });
 
   // 2. Helper function to load Google Analytics
@@ -41,28 +48,17 @@ const CookieConsent: React.FC = () => {
   };
 
   useEffect(() => {
-    // Check for existing cookie
     const storedConsent = Cookies.get('cookieConsent');
 
     if (!storedConsent) {
-      // No consent yet -> Show banner
       const timer = setTimeout(() => {
         setIsVisible(true);
       }, 1000);
       return () => clearTimeout(timer);
-    } else {
-      // Consent exists -> Check if we can track
-      try {
-        const parsedConsent = JSON.parse(storedConsent);
-        setPreferences(parsedConsent); // Sync state
-        if (parsedConsent.analytics) {
-          loadGoogleAnalytics();
-        }
-      } catch (e) {
-        // Fallback if JSON part fails
-        console.error("Error parsing cookie preferences", e);
-      }
+    } else if (preferences.analytics) {
+      loadGoogleAnalytics();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleAcceptAll = () => {
@@ -131,7 +127,7 @@ const CookieConsent: React.FC = () => {
                     fontSize: '1.25rem',
                     marginBottom: '12px',
                     color: 'var(--color-brand-navy)',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'Inter, sans-serif',
                     fontWeight: 700
                   }}>
                     We value your privacy
@@ -162,7 +158,7 @@ const CookieConsent: React.FC = () => {
                       padding: '14px 28px',
                       borderRadius: '0',
                       fontWeight: 600,
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'Inter, sans-serif',
                       cursor: 'pointer',
                       fontSize: '0.9rem',
                       letterSpacing: '0.02em',
@@ -188,7 +184,7 @@ const CookieConsent: React.FC = () => {
                       padding: '14px 36px',
                       borderRadius: '0',
                       fontWeight: 700,
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'Inter, sans-serif',
                       cursor: 'pointer',
                       fontSize: '0.9rem',
                       letterSpacing: '0.05em',
@@ -251,7 +247,7 @@ const CookieConsent: React.FC = () => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
                   <h3 style={{
                     fontSize: '1.75rem',
-                    fontFamily: 'Manrope, sans-serif',
+                    fontFamily: 'Inter, sans-serif',
                     fontWeight: 700,
                     color: 'var(--color-brand-navy)',
                     margin: 0
@@ -358,7 +354,7 @@ const CookieConsent: React.FC = () => {
                       fontWeight: 700,
                       cursor: 'pointer',
                       transition: 'all 0.2s',
-                      fontFamily: 'Manrope, sans-serif'
+                      fontFamily: 'Inter, sans-serif'
                     }}
                     onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(27, 43, 68, 0.05)'; }}
                     onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; }}
@@ -376,7 +372,7 @@ const CookieConsent: React.FC = () => {
                       fontWeight: 700,
                       cursor: 'pointer',
                       transition: 'all 0.2s',
-                      fontFamily: 'Manrope, sans-serif',
+                      fontFamily: 'Inter, sans-serif',
                       boxShadow: '0 4px 15px rgba(0, 191, 179, 0.2)'
                     }}
                     onMouseOver={(e) => { e.currentTarget.style.background = 'var(--color-primary-dark)'; e.currentTarget.style.borderColor = 'var(--color-primary-dark)'; }}

@@ -1,8 +1,34 @@
 import { motion } from 'framer-motion';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaCheckCircle } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        // Simulating API call
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+    };
+
     return (
         <div className="contact-page container">
             <motion.div
@@ -53,21 +79,66 @@ const Contact = () => {
 
                 {/* Contact Form */}
                 <div className="contact-form-card">
-                    <form className="contact-form">
-                        <div className="form-group">
-                            <label>Full Name</label>
-                            <input type="text" className="form-input" placeholder="John Doe" />
-                        </div>
-                        <div className="form-group">
-                            <label>Email Address</label>
-                            <input type="email" className="form-input" placeholder="john@company.com" />
-                        </div>
-                        <div className="form-group">
-                            <label>Message</label>
-                            <textarea rows={5} className="form-input" placeholder="How can we help you?"></textarea>
-                        </div>
-                        <button className="btn btn-primary form-submit-btn">Send Message</button>
-                    </form>
+                    {isSubmitted ? (
+                        <motion.div
+                            className="success-message"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                        >
+                            <FaCheckCircle className="success-icon" />
+                            <h3>Message Sent!</h3>
+                            <p>Thank you for reaching out. Our team will get back to you shortly.</p>
+                            <button className="btn btn-outline" onClick={() => setIsSubmitted(false)}>Send Another</button>
+                        </motion.div>
+                    ) : (
+                        <form className="contact-form" onSubmit={handleSubmit}>
+                            <div className="form-group">
+                                <label htmlFor="name">Full Name</label>
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    className="form-input"
+                                    placeholder="John Doe"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="email">Email Address</label>
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    className="form-input"
+                                    placeholder="john@company.com"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="message">Message</label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows={5}
+                                    className="form-input"
+                                    placeholder="How can we help you?"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                ></textarea>
+                            </div>
+                            <button
+                                className="btn btn-primary form-submit-btn"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
+                            </button>
+                        </form>
+                    )}
                 </div>
 
             </motion.div>

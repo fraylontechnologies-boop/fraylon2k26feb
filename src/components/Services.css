@@ -50,10 +50,9 @@
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
     gap: 1px;
-    /* White spacing between cards */
-    /* No borders between items in the screenshot style, or very subtle. 
-       The screenshot shows full-bleed images in grid cells. */
     counter-reset: service-counter;
+    position: relative;
+    /* Fix for framer-motion scroll calculations */
 }
 
 .service-card {
@@ -63,7 +62,10 @@
     /* border-bottom: 1px solid var(--border-light); */
     /* border: 1px solid rgba(255, 255, 255, 0.1); Removed border in favor of gap */
     /* Subtle border for separation */
-    transition: all 0.4s ease;
+    transition: box-shadow 0.4s ease;
+    opacity: 0;
+    /* Prevents initial blink before Framer Motion takes over */
+    will-change: opacity, transform;
     cursor: pointer;
     min-height: 450px;
     display: flex;
@@ -81,25 +83,19 @@
     top: 40px;
     right: 40px;
     font-size: 1.2rem;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: rgba(255, 255, 255, 0.3);
     font-weight: 400;
     z-index: 5;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
     z-index: 5;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 .service-card:hover::before {
     color: #fff;
-}
-
-.service-card:hover .service-icon {
-    /* color: #fff;  Icon is already white/light */
-    transform: scale(1.1);
 }
 
 .service-card:hover .read-more-link {
@@ -112,7 +108,7 @@
     color: #fff;
     margin-bottom: auto;
     /* Push content down */
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: none;
     z-index: 5;
 }
 
@@ -165,12 +161,12 @@
     height: 100%;
     object-fit: cover;
     opacity: 1;
-    /* Fully visible */
     transform: scale(1);
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: none;
     z-index: 1;
-    /* filter: brightness(0.6); Removed */
+    will-change: transform;
+    /* Promote to GPU layer for smoother scroll */
 }
 
 /* Gradient/Tint Overlay */
@@ -189,9 +185,7 @@
     /* Slightly lighter on hover */
 }
 
-.service-card:hover .service-bg-image {
-    transform: scale(1);
-}
+/* Removed hover scale */
 
 .service-content {
     position: relative;

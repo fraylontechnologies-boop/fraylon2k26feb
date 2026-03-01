@@ -214,7 +214,6 @@
 }
 
 .process-step:hover {
-    transform: translateY(-8px);
     border-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
@@ -347,7 +346,7 @@
 }
 
 .tech-name {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 1rem;
     color: var(--text-secondary);
@@ -528,7 +527,6 @@
 
 /* Hover Effects */
 .industry-card:hover {
-    transform: translateY(-5px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     border-color: var(--color-primary);
 }
@@ -536,10 +534,6 @@
 .industry-card:hover .industry-overlay {
     background: linear-gradient(to top, rgba(0, 191, 179, 0.9) 0%, rgba(0, 191, 179, 0.4) 100%);
     opacity: 0.9;
-}
-
-.industry-card:hover .industry-name {
-    transform: scale(1.05);
 }
 
 /* Reset old styles */
@@ -637,7 +631,6 @@
 .faq-card:hover {
     background: rgba(255, 255, 255, 0.04);
     border-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
 }
 

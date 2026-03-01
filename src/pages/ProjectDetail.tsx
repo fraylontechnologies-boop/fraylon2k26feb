@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaArrowLeft } from 'react-icons/fa';
@@ -17,21 +17,19 @@ const ProjectDetail = () => {
         window.scrollTo(0, 0);
     }, [id]);
 
-    const project = useMemo<EnrichedProject | null>(() => {
-        if (!id) return null;
-        // Search through all services to find the project
-        // The link in data is like "/work/techcrunch", so we match the end part
+    let project: EnrichedProject | null = null;
+    if (id) {
         for (const serviceKey in servicesData) {
             const service = servicesData[serviceKey];
             if (service.projects) {
                 const found = service.projects.find((p) => p.link === `/work/${id}`);
                 if (found) {
-                    return { ...found, serviceTitle: service.title };
+                    project = { ...found, serviceTitle: service.title };
+                    break;
                 }
             }
         }
-        return null;
-    }, [id]);
+    }
 
     if (!project) {
         return (

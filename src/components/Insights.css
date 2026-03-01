@@ -39,6 +39,8 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 400px);
     gap: 20px;
+    position: relative;
+    /* Fix for scroll animation calculations */
 }
 
 /* Shared Image Style */
@@ -54,7 +56,6 @@
 .insight-large:hover .insight-img,
 .insight-tall:hover .insight-img,
 .insight-small:hover .insight-img {
-    transform: scale(1.05);
     opacity: 0.6;
 }
 
@@ -66,6 +67,8 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    opacity: 0;
+    will-change: opacity, transform;
 }
 
 .insight-content-overlay {
@@ -120,6 +123,8 @@
     overflow: hidden;
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    will-change: opacity, transform;
 }
 
 .insight-tall .insight-img {
@@ -156,6 +161,8 @@
     overflow: hidden;
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    will-change: opacity, transform;
 }
 
 .insight-small .insight-img {

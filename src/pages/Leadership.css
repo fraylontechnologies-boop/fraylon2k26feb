@@ -79,7 +79,8 @@
     display: flex;
     flex-direction: column;
     gap: 160px;
-    /* Increased separation for grandeur */
+    position: relative;
+    /* Fix for scroll animation calculations */
 }
 
 /* Card Structure */
@@ -89,6 +90,9 @@
     gap: 100px;
     align-items: center;
     position: relative;
+    opacity: 0;
+    /* Base state to prevent blink */
+    will-change: opacity, transform;
 }
 
 /* Alternating Layout */
@@ -135,15 +139,11 @@
 }
 
 .leader-card:hover .leader-image-accent {
-    top: -15px;
-    left: -15px;
-    /* or right depending on even/odd */
     opacity: 1;
 }
 
 .leader-card:nth-child(even):hover .leader-image-accent {
-    top: -15px;
-    right: -15px;
+    opacity: 1;
 }
 
 .leader-image-wrapper {
@@ -154,11 +154,10 @@
     background: #e2e8f0;
     /* Clean shadow */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+    transition: box-shadow 0.6s ease;
 }
 
 .leader-card:hover .leader-image-wrapper {
-    transform: translateY(-10px);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
 }
 
@@ -172,7 +171,6 @@
 
 .leader-card:hover .leader-image {
     filter: grayscale(0%) contrast(1);
-    transform: scale(1.08);
 }
 
 /* Info Styling */
@@ -250,7 +248,6 @@
     background: var(--color-brand-black);
     border-color: var(--color-brand-black);
     color: #fff;
-    transform: translateY(-3px);
 }
 
 /* --- Philosophy Section (Minimal) --- */

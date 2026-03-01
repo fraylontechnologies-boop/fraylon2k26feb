@@ -53,9 +53,9 @@ const Industries = () => {
                         <motion.div
                             key={activeKey}
                             className="ind-content-inner"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
                             transition={{ duration: 0.3 }}
                         >
                             <span className="ind-overline">{activeIndustry.tagline}</span>

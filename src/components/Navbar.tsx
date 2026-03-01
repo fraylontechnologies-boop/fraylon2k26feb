@@ -69,7 +69,6 @@ const Navbar = () => {
       </Link>
 
       <div className="nav-links desktop-only">
-        <Link to="/" className="nav-link" onClick={closeMenu}>Home</Link>
 
         {/* SERVICES MEGA MENU */}
         <div
@@ -298,7 +297,6 @@ const Navbar = () => {
           transition={{ type: "tween", duration: 0.3 }}
         >
           <div className="mobile-menu-content">
-            <Link to="/" className="mobile-link" onClick={closeMenu}>Home</Link>
 
             <div className="mobile-accordion">
               <div className="mobile-accordion-header" onClick={() => toggleMobileExpand('services')}>

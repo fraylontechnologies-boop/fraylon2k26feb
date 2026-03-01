@@ -104,7 +104,7 @@
     color: #0f172a;
     line-height: 1.1;
     margin-bottom: 25px;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     /* Assuming font stack */
 }
 
@@ -172,7 +172,6 @@
 
 .btn-deep-dive:hover {
     background: #334155;
-    transform: translateY(-2px);
 }
 
 .ind-stats-row {

@@ -93,13 +93,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.4s ease;
     font-size: 3.5rem;
     width: 100%;
 }
 
 .partner-logo-text {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     /* Explicit clean font */
     font-weight: 800;
     font-size: 2rem;
@@ -142,12 +142,11 @@
 
 /* Hover Interactions */
 .partner-item:hover .partner-icon-wrapper {
-    transform: translateY(-40px) scale(0.85);
+    opacity: 0.15;
 }
 
 .partner-item:hover .partner-hover-info {
     opacity: 1;
-    transform: translateY(0);
 }
 
 /* --- Full Width CTA Section (New Redesign) --- */

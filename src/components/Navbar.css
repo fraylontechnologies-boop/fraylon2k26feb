@@ -20,7 +20,7 @@
 }
 
 .logo {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.6rem;
     font-weight: 800;
     color: var(--text-main);
@@ -60,7 +60,7 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     transition: color 0.1s;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     text-decoration: none;
     padding: 20px 0;
     /* Increase hit area */
@@ -213,7 +213,6 @@
 }
 
 .mega-featured:hover img {
-    transform: scale(1.05);
     opacity: 0.5;
 }
 
@@ -230,7 +229,7 @@
     color: #fff;
     font-size: 1.4rem;
     margin-bottom: 8px;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .mega-featured-text p {
@@ -277,7 +276,6 @@
 }
 
 .nav-highlight-card:hover .highlight-image img {
-    transform: scale(1.05);
     opacity: 1;
 }
 

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaCloud, FaBrain, FaShieldAlt, FaCode, FaChartLine, FaMobileAlt, FaArrowRight } from 'react-icons/fa';
 import './Services.css';
 
@@ -66,54 +66,50 @@ const ServiceCard = ({ service, index }: { service: ServiceItem, index: number }
     });
 
     // Parallax effect: Move image vertically as user scrolls
-    const rawY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-    const y = useSpring(rawY, { stiffness: 100, damping: 30, restDelta: 0.001 });
+    const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+    // Removed useSpring to prevent initial 'jump' when spring settles from 0 to -10%
 
     return (
         <motion.div
             ref={ref}
             className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ delay: index * 0.1, duration: 0.8 }}
         >
-            <div className="service-icon">{service.icon}</div>
-            <div className="service-content">
-                <h3>{service.title}</h3>
-                <p>{service.desc}</p>
-                <div className="read-more-link">
-                    <Link to={service.link} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'inherit', textDecoration: 'none' }}>
+            <Link
+                to={service.link}
+                className="service-card-link"
+                aria-label={`Learn more about ${service.title}`}
+                style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', height: '100%', textDecoration: 'none', color: 'inherit' }}
+            >
+                <div className="service-icon">{service.icon}</div>
+                <div className="service-content">
+                    <h3>{service.title}</h3>
+                    <p>{service.desc}</p>
+                    <div className="read-more-link">
                         LEARN MORE <FaArrowRight size={12} />
-                    </Link>
+                    </div>
                 </div>
-            </div>
+            </Link>
 
             {/* Background Image with Parallax */}
-            <motion.div
-                className="service-image-container"
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    zIndex: 1,
-                    overflow: 'hidden'
-                }}
-            >
+            <div className="service-image-container"
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1, overflow: 'hidden' }}>
                 <motion.img
                     src={service.image}
                     alt={service.title}
                     className="service-bg-image"
                     style={{
                         y,
-                        scale: 1.2, // Scale up to ensure coverage during scroll
+                        scale: 1.2,
                         height: '110%',
-                        top: '-5%'
+                        top: '-5%',
+                        position: 'absolute'
                     }}
                 />
-            </motion.div>
+            </div>
         </motion.div>
     );
 };

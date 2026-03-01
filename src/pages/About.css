@@ -81,10 +81,6 @@
     transition: transform 0.7s ease;
 }
 
-.story-image-wrapper:hover .story-img {
-    transform: scale(1.05);
-}
-
 /* --- Values Section --- */
 .values-section {
     padding: 100px 0;
@@ -113,7 +109,6 @@
 }
 
 .value-card:hover {
-    transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
@@ -155,7 +150,7 @@
     color: var(--color-brand-black);
     line-height: 1;
     margin-bottom: 10px;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .stat-label {
