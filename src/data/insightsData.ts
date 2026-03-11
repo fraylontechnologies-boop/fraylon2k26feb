@@ -202,7 +202,7 @@ export const insightsData = [
         `,
         author: 'Sneha Kapoor',
         authorRole: 'Chief Security Officer',
-        authorBio: 'Sneha is a cybersecurity veteran with a focus on zero-trust frameworks and threat intelligence. She advises Fortune 500 companies on security posture.',
+        authorBio: 'Sneha is a cybersecurity veteran with a focus on zero-trust frameworks and threat intelligence. She advises leading global enterprises on security posture.',
         authorImage: 'https://randomuser.me/api/portraits/women/68.jpg',
         date: 'Nov 05, 2025',
         readTime: '7 min read'
@@ -225,7 +225,7 @@ export const insightsData = [
         `,
         author: 'Sneha Kapoor',
         authorRole: 'Chief Security Officer',
-        authorBio: 'Sneha is a cybersecurity veteran with a focus on zero-trust frameworks and threat intelligence. She advises Fortune 500 companies on security posture.',
+        authorBio: 'Sneha is a cybersecurity veteran with a focus on zero-trust frameworks and threat intelligence. She advises leading global enterprises on security posture.',
         authorImage: 'https://randomuser.me/api/portraits/women/68.jpg',
         date: 'Feb 10, 2026',
         readTime: '6 min read'
@@ -246,7 +246,7 @@ export const insightsData = [
         `,
         author: 'Sneha Kapoor',
         authorRole: 'Chief Security Officer',
-        authorBio: 'Sneha is a cybersecurity veteran with a focus on zero-trust frameworks and threat intelligence. She advises Fortune 500 companies on security posture.',
+        authorBio: 'Sneha is a cybersecurity veteran with a focus on zero-trust frameworks and threat intelligence. She advises leading global enterprises on security posture.',
         authorImage: 'https://randomuser.me/api/portraits/women/68.jpg',
         date: 'Dec 18, 2025',
         readTime: '5 min read'

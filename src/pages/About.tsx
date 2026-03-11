@@ -44,12 +44,12 @@ const About = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="story-heading">A Decade of relentless innovation.</h2>
+                        <h2 className="story-heading">Engineering the next era of digital.</h2>
                         <p className="story-text">
-                            Founded in 2014, Fraylon began with a simple belief: that technology should not just support business, but drive it. What started as a boutique software studio has evolved into a global digital transformation partner for Fortune 500 companies.
+                            Founded in 2025, Fraylon began with a simple belief: that technology should not just support business, but drive it. What started as a vision for the next generation of digital infrastructure has rapidly evolved into a strategic partner for forward-thinking enterprises.
                         </p>
                         <p className="story-text">
-                            We don't just write code; we solve complex problems. From legacy system modernization to pioneering AI agents, our work sits at the intersection of robust engineering and visionary strategy.
+                            We don't just write code; we solve complex problems for the modern age. From cloud-native systems to pioneering autonomous AI agents, our work sits at the intersection of robust engineering and visionary strategy.
                         </p>
                         <div style={{ marginTop: '40px', paddingLeft: '20px', borderLeft: '4px solid var(--color-primary)' }}>
                             <p style={{ fontSize: '1.5rem', fontWeight: 'bold', fontStyle: 'italic', color: 'var(--color-brand-black)' }}>
@@ -74,20 +74,20 @@ const About = () => {
                 {/* --- Stats Section --- */}
                 <div className="about-stats">
                     <motion.div className="stat-item" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                        <span className="stat-number">10+</span>
-                        <span className="stat-label">Years of Excellence</span>
+                        <span className="stat-number">2025</span>
+                        <span className="stat-label">Year Founded</span>
                     </motion.div>
                     <motion.div className="stat-item" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-                        <span className="stat-number">150+</span>
-                        <span className="stat-label">Enterprise Clients</span>
+                        <span className="stat-number">40+</span>
+                        <span className="stat-label">Successful Projects</span>
                     </motion.div>
                     <motion.div className="stat-item" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-                        <span className="stat-number">12</span>
-                        <span className="stat-label">Global Offices</span>
+                        <span className="stat-number">2</span>
+                        <span className="stat-label">Strategic Hubs</span>
                     </motion.div>
                     <motion.div className="stat-item" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
-                        <span className="stat-number">500+</span>
-                        <span className="stat-label">Engineers & Strategists</span>
+                        <span className="stat-number">80+</span>
+                        <span className="stat-label">Specialized Experts</span>
                     </motion.div>
                 </div>
             </div>

@@ -764,7 +764,7 @@ export const servicesData: Record<string, ServiceData> = {
             { step: '04', title: 'Guidance', desc: 'Ongoing support during implementation.' }
         ],
         benefits: [
-            { title: 'Clarity', desc: 'Make informed decisions backed by decades of engineering experience.' },
+            { title: 'Clarity', desc: 'Make informed decisions backed by deep engineering expertise.' },
             { title: 'Risk Reduction', desc: 'Avoid costly architectural mistakes and security breaches.' },
             { title: 'Speed', desc: 'Accelerate development by unblocking technical bottlenecks.' }
         ],

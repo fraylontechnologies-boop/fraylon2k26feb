@@ -15,7 +15,7 @@ const Sitemap = () => {
             links: [
                 { name: "Home", path: "/" },
                 { name: "About Us", path: "/about" },
-                { name: "Leadership", path: "/leadership" },
+                { name: "Leadership team", path: "/leadership" },
                 { name: "Careers", path: "/careers" },
                 { name: "Strategic Partners", path: "/partners" },
                 { name: "News & Media", path: "/news" },

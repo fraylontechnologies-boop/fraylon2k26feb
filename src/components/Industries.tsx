@@ -41,7 +41,7 @@ const Industries = () => {
                     <div className="ind-image-content">
                         <div className="ind-quote-box">
                             <p>
-                                "Our {activeIndustry.title} practice leverages over a decade of technical R&D to solve complex industry-specific hurdles."
+                                "Our {activeIndustry.title} practice leverages deep technical R&D to solve complex industry-specific hurdles."
                             </p>
                         </div>
                     </div>

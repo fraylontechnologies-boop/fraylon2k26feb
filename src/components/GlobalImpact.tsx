@@ -11,7 +11,7 @@ const GlobalImpact = () => {
                         <h2 className="section-title">Delivering Value <br /> Without Borders</h2>
                     </div>
                     <p className="section-desc">
-                        With delivery centers in 15 countries and a workforce of 12,000+, we operate where our clients need us most.
+                        With a growing global presence and a dedicated team of 80+ specialized experts, we operate where our clients need us most.
                     </p>
                 </div>
 
@@ -49,8 +49,8 @@ const GlobalImpact = () => {
                         </div>
 
                         <div className="impact-stat-card">
-                            <h4>140+</h4>
-                            <p>Fortune 500 Clients Served</p>
+                            <h4>40+</h4>
+                            <p>High-Growth Enterprises</p>
                         </div>
                     </div>
                 </div>

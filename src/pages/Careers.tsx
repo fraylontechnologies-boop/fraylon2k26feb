@@ -62,7 +62,7 @@ const Careers = () => {
                     >
                         <FaGlobeAmericas className="value-icon" />
                         <h3>Global Impact</h3>
-                        <p>Work on critical digital infrastructure for Fortune 500 companies. Your code will touch millions of lives across continents.</p>
+                        <p>Work on critical digital infrastructure for leading global enterprises. Your code will touch millions of lives across continents.</p>
                     </motion.div>
 
                     <motion.div
