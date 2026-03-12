@@ -1,7 +1,7 @@
-/* --- Elite MNC Leader Profile CSS (PwC/Big-4 Style) --- */
-
+/* --- Elite MNC Leader Profile CSS - Editorial Light --- */
 .leader-profile-page {
     background: #ffffff;
+    color: #05080a;
     overflow-x: hidden;
 }
 
@@ -13,9 +13,7 @@
 
 /* --- Professional Breadcrumbs --- */
 .profile-breadcrumbs {
-    padding: 100px 0 20px;
-    background: #fff;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 120px 0 20px;
 }
 
 .profile-breadcrumbs .container {
@@ -25,82 +23,89 @@
 }
 
 .profile-breadcrumbs a {
-    color: var(--color-brand-black);
+    color: #05080a;
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
     transition: color 0.3s ease;
+    opacity: 0.5;
 }
 
 .profile-breadcrumbs a:hover {
+    opacity: 1;
     color: var(--mnc-accent);
 }
 
 .profile-breadcrumbs .sep {
-    font-size: 0.85rem;
-    color: rgba(0, 0, 0, 0.3);
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.2);
 }
 
 .profile-breadcrumbs .current {
-    font-size: 0.85rem;
-    color: rgba(0, 0, 0, 0.5);
-    font-weight: 500;
+    font-size: 0.7rem;
+    color: var(--mnc-accent);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
 }
 
-/* --- Hero Section - High End Gradient (PwC Style) --- */
+/* --- Hero Section - Cinematic Editorial --- */
 .profile-hero {
-    /* Soft Warm Gradient similar to PwC screenshot */
-    background: linear-gradient(105deg, #fff 15%, #fff5ed 50%, #ffe9d7 100%);
-    padding: 140px 0 180px;
+    padding: 60px 0 120px;
     position: relative;
-    overflow: hidden;
+    background: #ffffff;
 }
 
 .hero-layout {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 10;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 100px;
+    align-items: end;
 }
 
 .hero-text {
-    max-width: 750px;
+    position: relative;
+    z-index: 10;
 }
 
 .leader-role-tag {
     display: block;
     color: var(--mnc-accent);
     font-weight: 900;
-    font-size: 0.85rem;
-    letter-spacing: 0.25em;
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
     text-transform: uppercase;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .leader-name-heading {
-    font-size: clamp(3.5rem, 8vw, 6rem);
-    color: var(--mnc-brand-black);
+    font-size: clamp(4rem, 10vw, 8rem);
+    color: #05080a;
     font-weight: 950;
-    line-height: 0.95;
-    margin-bottom: 25px;
-    letter-spacing: -0.055em;
+    line-height: 0.85;
+    margin-bottom: 30px;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
 }
 
 .leader-org-detail {
-    font-size: 1.8rem;
-    color: var(--mnc-brand-black);
-    font-weight: 800;
-    margin-bottom: 40px;
-    letter-spacing: -0.02em;
+    font-size: 1.25rem;
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: 600;
+    margin-bottom: 50px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .leader-intro-para {
-    font-size: 1.5rem;
-    color: var(--mnc-text-deep);
-    line-height: 1.7;
-    margin-bottom: 50px;
+    font-size: 1.6rem;
+    color: #05080a;
+    line-height: 1.4;
+    margin-bottom: 60px;
     font-weight: 400;
+    max-width: 650px;
 }
 
 .leader-contact-links {
@@ -113,22 +118,25 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    color: var(--mnc-brand-black);
+    color: #05080a;
     font-weight: 900;
-    text-decoration: underline;
-    font-size: 1.1rem;
-    text-underline-offset: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border-bottom: 2px solid var(--mnc-accent);
+    padding-bottom: 8px;
     transition: all 0.3s ease;
 }
 
 .contact-link:hover {
     color: var(--mnc-accent);
-    text-underline-offset: 10px;
+    border-bottom-color: #05080a;
 }
 
 .social-link {
-    color: var(--mnc-brand-black);
-    font-size: 2.2rem;
+    color: #05080a;
+    font-size: 2rem;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
@@ -139,13 +147,11 @@
 
 /* Hero Portrait Styling */
 .hero-image-box {
-    width: 500px;
-    height: 600px;
-    flex-shrink: 0;
-    border-radius: 4px;
+    width: 100%;
+    aspect-ratio: 4/5;
+    position: relative;
     overflow: hidden;
-    /* Clean editorial shadow */
-    box-shadow: 0 60px 120px rgba(0, 0, 0, 0.1);
+    background: #f8fafc;
 }
 
 .hero-image-box img {
@@ -153,25 +159,38 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    mix-blend-mode: normal;
+    filter: grayscale(100%) contrast(1.1);
+    transition: filter 1s ease;
+}
+
+.hero-image-box:hover img {
+    filter: grayscale(0%) contrast(1.05);
 }
 
 /* --- Bio Content Area --- */
 .profile-content-section {
-    padding: 180px 0;
+    padding: 140px 0;
+    background: #fbfbfc;
 }
 
 .bio-grid {
     display: grid;
     grid-template-columns: 1fr 400px;
-    gap: 100px;
+    gap: 120px;
 }
 
 .main-bio p {
-    font-size: 1.4rem;
-    color: var(--mnc-text-deep);
+    font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.6);
     line-height: 1.8;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
+    max-width: 800px;
+}
+
+.main-bio p:first-of-type {
+    color: #05080a;
+    font-weight: 500;
+    font-size: 1.5rem;
 }
 
 .sidebar-info {
@@ -184,21 +203,21 @@
 }
 
 .info-block h5 {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 900;
     color: var(--mnc-accent);
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    margin-bottom: 25px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    letter-spacing: 0.3em;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
     padding-bottom: 15px;
 }
 
 .info-block p, .info-block ul {
-    font-size: 1.3rem;
-    color: var(--mnc-brand-black);
+    font-size: 1.1rem;
+    color: #05080a;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .info-block ul {
@@ -207,75 +226,95 @@
 }
 
 .info-block ul li {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-block ul li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--mnc-accent);
+    flex-shrink: 0;
 }
 
 /* --- Wide CTA --- */
 .profile-cta {
-    padding: 120px 0 200px;
-    background: #fff;
-    border-top: 1px solid rgba(0,0,0,0.05);
+    padding: 160px 0;
+    background: #ffffff;
 }
 
 .cta-box {
-    text-align: center;
-    max-width: 900px;
-    margin: 0 auto;
+    text-align: left;
+    max-width: 1000px;
 }
 
 .cta-box h3 {
-    font-size: 3.5rem;
-    color: var(--mnc-brand-black);
-    font-weight: 900;
-    margin-bottom: 30px;
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: #05080a;
+    font-weight: 950;
+    margin-bottom: 40px;
     letter-spacing: -0.04em;
+    line-height: 0.95;
+    text-transform: uppercase;
 }
 
 .cta-box p {
-    font-size: 1.4rem;
-    color: var(--mnc-text-light);
-    margin-bottom: 50px;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 60px;
+    max-width: 800px;
+    line-height: 1.4;
 }
 
 .btn-mnc {
-    display: inline-block;
-    background: var(--mnc-brand-black);
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    background: #05080a;
     color: #fff;
-    padding: 24px 60px;
+    padding: 30px 60px;
     font-weight: 900;
     text-decoration: none;
-    border-radius: 2px;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
 }
 
 .btn-mnc:hover {
     background: var(--mnc-accent);
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 191, 179, 0.2);
+    transform: translateX(15px);
+    box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.05);
 }
 
 /* --- Mobile Styling --- */
 @media (max-width: 1200px) {
     .hero-layout {
-        flex-direction: column-reverse;
-        align-items: flex-start;
-        gap: 80px;
+        grid-template-columns: 1fr;
+        gap: 60px;
     }
+    
+    .hero-text {
+        order: 2;
+    }
+    
     .hero-image-box {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 4/5;
+        order: 1;
+        max-width: 600px;
     }
+    
     .bio-grid {
         grid-template-columns: 1fr;
+        gap: 80px;
     }
+    
     .sidebar-info {
         position: static;
-        border-top: 1px solid rgba(0,0,0,0.1);
-        padding-top: 80px;
+        padding-top: 60px;
+        border-top: 1px solid rgba(0,0,0,0.08);
     }
 }
 
@@ -283,10 +322,18 @@
     .leader-name-heading {
         font-size: 3.5rem;
     }
-    .profile-hero {
-        padding: 80px 0 120px;
+    
+    .leader-intro-para {
+        font-size: 1.25rem;
     }
-    .main-bio p {
-        font-size: 1.2rem;
+    
+    .profile-hero {
+        padding: 40px 0 80px;
+    }
+    
+    .btn-mnc {
+        width: 100%;
+        justify-content: center;
     }
 }
+
