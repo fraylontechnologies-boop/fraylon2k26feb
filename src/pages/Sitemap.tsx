@@ -88,12 +88,16 @@ const Sitemap = () => {
             links: [
                 { name: "Cloud Transformation", path: "/solutions/cloud" },
                 { name: "Data & Analytics", path: "/solutions/data" },
+                { name: "Artificial Intelligence", path: "/solutions/ai" },
                 { name: "Intelligent Automation", path: "/solutions/automation" },
                 { name: "SAP S/4HANA", path: "/solutions/sap" },
                 { name: "Oracle Cloud", path: "/solutions/oracle" },
                 { name: "Smart Supply Chain", path: "/solutions/supply-chain" },
+                { name: "HR Transformation", path: "/solutions/hr" },
                 { name: "Cybersecurity", path: "/solutions/cyber" },
-                { name: "Cloud Security", path: "/solutions/cloud-sec" }
+                { name: "Cloud Security", path: "/solutions/cloud-sec" },
+                { name: "Network Modernization", path: "/solutions/network" },
+                { name: "Governance & Risk", path: "/solutions/grc" }
             ]
         },
         {
@@ -104,12 +108,19 @@ const Sitemap = () => {
                 { name: "Banking & Finance", path: "/ind/banking" },
                 { name: "Insurance", path: "/ind/insurance" },
                 { name: "Payments & Fintech", path: "/ind/payments" },
+                { name: "Wealth Management", path: "/ind/wealth" },
                 { name: "Retail & Consumer Goods", path: "/ind/retail" },
-                { name: "Healthcare & Life Sciences", path: "/ind/health" },
+                { name: "Healthcare Payers", path: "/ind/health" },
+                { name: "Life Sciences", path: "/ind/life-sci" },
                 { name: "Industrial Manufacturing", path: "/ind/manufacturing" },
+                { name: "Automotive", path: "/ind/auto" },
                 { name: "Energy & Utilities", path: "/ind/energy" },
+                { name: "Chemicals & Agri", path: "/ind/chem" },
                 { name: "Telecommunications", path: "/ind/telecom" },
-                { name: "Public Sector", path: "/ind/public" }
+                { name: "Media & Entertainment", path: "/ind/media" },
+                { name: "High Tech", path: "/ind/hitech" },
+                { name: "Public Sector", path: "/ind/public" },
+                { name: "Travel & Logistics", path: "/ind/travel" }
             ]
         },
         {
@@ -117,6 +128,8 @@ const Sitemap = () => {
             icon: <FiFileText />,
             description: "Policies and thought leadership",
             links: [
+                { name: "Solutions Overview", path: "/solutions" },
+                { name: "Industry Overview", path: "/industries" },
                 { name: "Insights Hub", path: "/insights" },
                 { name: "Projects Portfolio", path: "/projects" },
                 { name: "Privacy Policy", path: "/privacy-policy" },

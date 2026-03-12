@@ -1,544 +1,391 @@
-/* --- Leadership Page Container --- */
+/* --- Big 4 Elite Leadership CSS --- */
+
+:root {
+    --mnc-bg: #ffffff;
+    --mnc-off-white: #f8fafc;
+    --mnc-soft-gray: #f1f5f9;
+    --mnc-brand-black: #000000;
+    --mnc-accent: #00bfb3; /* Fraylon Teal */
+    --mnc-text-deep: #1e293b;
+    --mnc-text-light: #64748b;
+    --mnc-serif: 'Playfair Display', serif; /* Optional: if loaded */
+}
+
 .leadership-page {
-    background-color: var(--bg-body);
+    background: var(--mnc-bg);
     overflow-x: hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* --- Hero Section --- */
-.leadership-hero {
-    position: relative;
-    padding: 180px 5vw 120px;
-    background: #fff;
-    color: var(--text-main);
-    text-align: center;
-    overflow: hidden;
-}
-
-.leadership-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-        radial-gradient(circle at 20% 30%, rgba(0, 191, 179, 0.03) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(27, 43, 68, 0.03) 0%, transparent 40%);
-    z-index: 0;
-}
-
-.hero-tag {
-    display: inline-block;
-    padding: 8px 0;
-    color: var(--color-primary);
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 32px;
-    position: relative;
-    z-index: 1;
-}
-
-.hero-content {
-    max-width: 900px;
+.container {
+    max-width: 1400px;
     margin: 0 auto;
-    position: relative;
-    z-index: 1;
+    padding: 0 5vw;
 }
 
-.hero-title {
-    font-size: clamp(3.5rem, 7vw, 5.5rem);
-    line-height: 1.05;
-    margin: 0 0 32px;
-    letter-spacing: -0.04em;
+/* --- Professional Hero --- */
+.corporate-hero {
+    padding: 260px 0 100px;
+    background: white;
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.corporate-tag {
+    display: block;
+    color: var(--mnc-accent);
     font-weight: 800;
-    color: var(--color-brand-black);
-    background: linear-gradient(135deg, var(--color-brand-black) 0%, #334155 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero-description {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    line-height: 1.8;
-    margin: 0 auto;
-    max-width: 650px;
-}
-
-/* --- Visual Tree Structure --- */
-.tree-structure-section {
-    padding: 120px 0;
-    background: #fff;
-    position: relative;
-}
-
-.tree-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-.tree-node {
-    background: #fff;
-    border: 1px solid rgba(15, 23, 42, 0.05);
-    padding: 0;
-    display: flex;
-    gap: 0;
-    align-items: stretch;
-    max-width: 550px;
-    position: relative;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    border-radius: 0;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-}
-
-.tree-node:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
-    border-color: var(--color-primary);
-}
-
-.node-image {
-    width: 200px;
-    height: auto;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-    background: #f1f5f9;
-}
-
-.node-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tree-node:hover .node-image img {
-    transform: scale(1.08);
-}
-
-.node-info {
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-}
-
-.node-info h3 {
-    font-size: 1.6rem;
-    margin-bottom: 8px;
-    color: var(--color-brand-black);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-}
-
-.node-role {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 800;
-    color: var(--color-primary);
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 30px;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    margin-bottom: 16px;
-    position: relative;
 }
 
-.node-role::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 20px;
-    height: 1px;
-    background: var(--color-primary);
+.hero-header h1 {
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
+    color: var(--mnc-brand-black);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 35px;
+    letter-spacing: -0.05em;
 }
 
-.node-info p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
+.hero-header p {
+    color: var(--mnc-text-light);
+    font-size: 1.4rem;
+    max-width: 800px;
+    line-height: 1.7;
     font-weight: 400;
 }
 
-/* Connectors */
-.tree-top-level {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* --- Editorial Grid (CEO/CTO) --- */
+.council-section {
+    padding: 120px 0;
+    background: #fff;
+}
+
+.section-title-box {
     margin-bottom: 80px;
-    position: relative;
-    width: 100%;
-}
-
-.top-nodes-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 100px;
-    max-width: 1100px;
-    position: relative;
-}
-
-.root-multi-connector {
-    width: 50%;
-    height: 80px;
-    border-left: 2px solid rgba(0, 198, 165, 0.2);
-    border-right: 2px solid rgba(0, 198, 165, 0.2);
-    border-bottom: 2px solid rgba(0, 198, 165, 0.2);
-    position: absolute;
-    bottom: -80px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.root-multi-connector::after {
-    content: '';
-    width: 2px;
-    height: 40px;
-    background: rgba(0, 198, 165, 0.3);
-    position: absolute;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.tree-branches {
-    width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 15px;
 }
 
-.branches-connector-line {
-    width: 50%;
-    height: 2px;
-    background: rgba(0, 198, 165, 0.2);
-    position: absolute;
-    top: 0;
+.static-filter-bar {
+    display: flex;
+    gap: 30px;
 }
 
-.exec-grid {
+.filter-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.filter-label:hover {
+    color: var(--mnc-accent);
+}
+
+.line-tag {
+    font-size: 1rem;
+    font-weight: 900;
+    color: var(--mnc-brand-black);
+    letter-spacing: 0.05em;
+}
+
+.council-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 60px;
-    width: 100%;
-    max-width: 1100px;
-    margin-top: 50px;
 }
 
-/* Branch Nodes (Vertical Editorial Style) */
-.exec-node {
-    flex-direction: column;
-    text-align: center;
-    padding: 0;
-    max-width: none;
-    align-items: center;
-}
-
-.exec-node .node-image {
-    width: 100%;
-    aspect-ratio: 4/5;
-    height: auto;
-}
-
-.exec-node .node-info {
-    padding: 30px 25px;
-    text-align: center;
-    align-items: center;
-}
-
-.exec-node .node-role::after {
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.branch-line {
-    width: 2px;
-    height: 50px;
-    background: rgba(0, 198, 165, 0.2);
-    position: absolute;
-    top: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* --- Steering Committee --- */
-.committee-section {
-    padding: 120px 5vw;
-    background-color: var(--color-brand-navy);
-    color: #fff;
-}
-
-.committee-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 80px;
-    align-items: center;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.section-icon {
-    font-size: 2.5rem;
-    color: var(--color-primary);
-    margin-bottom: 20px;
-}
-
-.committee-text h2 {
-    color: #fff;
-    font-size: 2.8rem;
-    line-height: 1.1;
-    margin-bottom: 30px;
-}
-
-.committee-text p {
-    color: #94a3b8;
-    font-size: 1.2rem;
-    line-height: 1.6;
-}
-
-.committee-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.committee-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 30px;
-    transition: all 0.3s;
-}
-
-.committee-card:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: var(--color-primary);
-}
-
-.card-top {
+.council-card {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    font-size: 0.8rem;
-    color: var(--color-primary);
-    font-weight: 700;
-}
-
-.committee-card h4 {
-    color: #fff;
-    font-size: 1.25rem;
-    margin-bottom: 8px;
-}
-
-.committee-card p {
-    color: #94a3b8;
-    font-size: 0.9rem;
-}
-
-/* --- Philosophy --- */
-.philosophy-section {
-    padding: 150px 5vw;
-    background: #f8fafc;
-    text-align: center;
-}
-
-.philosophy-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.quote-icon-large {
-    font-size: 4rem;
-    color: var(--color-primary);
-    opacity: 0.2;
-    margin-bottom: 40px;
-}
-
-.philosophy-text {
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    font-style: italic;
-    color: var(--color-brand-navy);
-    line-height: 1.3;
-}
-
-/* --- Family Insights --- */
-.family-insights-section {
-    padding: 120px 5vw;
     background: #fff;
-}
-
-.section-header-centered {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 80px;
-}
-
-.section-header-centered .tag {
-    display: inline-block;
-    color: var(--color-primary);
-    font-weight: 700;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
-
-.section-header-centered h2 {
-    font-size: 2.8rem;
-    color: var(--color-brand-black);
-    margin-bottom: 24px;
-}
-
-.section-header-centered p {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-}
-
-.insights-tree-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.insight-tree-card {
-    background: #fff;
-    border: 1px solid rgba(15, 23, 42, 0.05);
+    border-radius: 2px;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid transparent;
 }
 
-.insight-tree-card:hover {
+.council-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
-    border-color: var(--color-primary);
+    box-shadow: 0 50px 100px rgba(0,0,0,0.08);
 }
 
-.insight-image-wrapper {
+.member-image-wrapper {
+    width: 300px;
+    height: 400px;
+    flex-shrink: 0;
     position: relative;
-    height: 250px;
-    overflow: hidden;
+    background: #f1f5f9;
 }
 
-.insight-image-wrapper img {
+.member-image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    filter: brightness(0.95) contrast(1.05);
 }
 
-.insight-tree-card:hover .insight-image-wrapper img {
-    transform: scale(1.1);
+.member-profile {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+    flex-grow: 1;
 }
 
-.insight-category {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: var(--color-primary);
-    color: #fff;
-    padding: 6px 16px;
+.member-subtitle {
+    color: var(--mnc-accent);
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 15px;
+}
+
+.member-profile h3 {
+    font-size: 2.2rem;
+    color: var(--mnc-brand-black);
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+}
+
+.member-bio {
+    color: var(--mnc-text-deep);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.read-bio-btn {
+    font-weight: 900;
+    font-size: 0.9rem;
+    color: var(--mnc-brand-black);
+    text-decoration: none;
+    border-bottom: 2px solid var(--mnc-accent);
+    padding-bottom: 4px;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.read-bio-btn:hover {
+    color: var(--mnc-accent);
+    border-bottom-color: var(--mnc-brand-black);
+}
+
+/* --- Global Operations Section --- */
+.operations-section {
+    padding: 120px 0;
+    background: var(--mnc-off-white);
+}
+
+.operations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.leader-profile-row {
+    background: white;
+    padding: 50px;
+    border: 1px solid rgba(0,0,0,0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: all 0.4s ease;
+}
+
+.leader-profile-row:hover {
+    border-color: var(--mnc-accent);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+}
+
+.row-header .role {
+    color: var(--mnc-accent);
+    font-weight: 800;
     font-size: 0.7rem;
-    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.name-link {
+    text-decoration: none;
+}
+
+.row-header h4 {
+    font-size: 1.8rem;
+    color: var(--mnc-brand-black);
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.row-content p {
+    font-size: 1.05rem;
+    color: var(--mnc-text-light);
+    line-height: 1.6;
+}
+
+.row-action .ln-icon {
+    font-size: 1.8rem;
+    color: var(--mnc-brand-black);
+    opacity: 0.1;
+    transition: all 0.3s ease;
+}
+
+.leader-profile-row:hover .ln-icon {
+    opacity: 1;
+    color: var(--mnc-accent);
+}
+
+/* --- Insights Corporate Styling --- */
+.corporate-insights {
+    padding: 140px 0;
+}
+
+.insights-header h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--mnc-brand-black);
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+}
+
+.insights-header p {
+    font-size: 1.4rem;
+    color: var(--mnc-text-light);
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+.insight-card-mnc {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.insight-card-mnc:hover {
+    border-bottom-color: var(--mnc-accent);
+}
+
+.card-top {
+    height: 300px;
+    background: #f1f5f9;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.category-mnc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--mnc-accent);
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+.card-top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-bottom h4 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--mnc-brand-black);
+    margin-bottom: 15px;
+    line-height: 1.25;
+}
+
+.card-bottom p {
+    color: var(--mnc-text-light);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.link-arrow {
+    font-weight: 900;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+}
+
+/* --- Corporate Quote --- */
+.corporate-quote {
+    padding: 180px 0;
+    background: white;
+}
+
+.quote-wrap {
+    text-align: left;
+    max-width: 1000px;
+}
+
+.quote-wrap p {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--mnc-brand-black);
+    letter-spacing: -0.04em;
+    margin-bottom: 40px;
+}
+
+.attribution {
+    font-weight: 900;
+    font-size: 1rem;
+    border-left: 4px solid var(--mnc-accent);
+    padding-left: 20px;
+    color: var(--mnc-brand-black);
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
-.insight-content {
-    padding: 32px;
-}
-
-.insight-date {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-bottom: 12px;
-}
-
-.insight-content h3 {
-    font-size: 1.5rem;
-    color: var(--color-brand-black);
-    margin-bottom: 16px;
-    line-height: 1.3;
-}
-
-.insight-content p {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 24px;
-}
-
-.insight-read-more {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: none;
-    border: none;
-    color: var(--color-brand-black);
-    font-weight: 700;
-    font-size: 0.9rem;
-    cursor: pointer;
-    padding: 0;
-    transition: gap 0.3s ease;
-}
-
-.insight-read-more:hover {
-    gap: 12px;
-    color: var(--color-primary);
-}
-
-/* Mobile Responsive */
+/* --- Responsive fixes --- */
 @media (max-width: 1200px) {
-    .exec-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-    
-    .insights-tree-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .top-nodes-grid {
+    .council-grid, .operations-grid, .insights-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .branches-connector-line,
-    .branch-line,
-    .root-multi-connector {
-        display: none;
-    }
-}
-
-@media (max-width: 991px) {
-    .committee-layout {
-        grid-template-columns: 1fr;
-    }
-    
-    .insights-tree-grid {
-        grid-template-columns: 1fr;
-        max-width: 500px;
     }
 }
 
 @media (max-width: 768px) {
-    .tree-node {
+    .council-card {
         flex-direction: column;
-        text-align: center;
-        padding: 30px;
     }
-    
-    .committee-grid {
-        grid-template-columns: 1fr;
+    .member-image-wrapper {
+        width: 100%;
+        height: 350px;
     }
-    
-    .hero-title {
+    .hero-header h1 {
         font-size: 3rem;
     }
 }

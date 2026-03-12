@@ -29,6 +29,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 const Contact = lazy(() => import('./pages/Contact'));
 const About = lazy(() => import('./pages/About'));
 const Leadership = lazy(() => import('./pages/Leadership'));
+const LeaderProfile = lazy(() => import('./pages/LeaderProfile'));
 const NewsMedia = lazy(() => import('./pages/NewsMedia'));
 const Partners = lazy(() => import('./pages/Partners'));
 const Solutions = lazy(() => import('./pages/Solutions'));
@@ -110,6 +111,9 @@ function App() {
     } else if (location.pathname.startsWith('/ind/')) {
       const ind = location.pathname.split('/').pop()?.toUpperCase();
       title = `${ind} Industry | Fraylon Technologies`;
+    } else if (location.pathname.startsWith('/leadership/')) {
+      const leader = location.pathname.split('/').pop()?.replace(/-/g, ' ');
+      title = `${leader?.toUpperCase()} | Leadership | Fraylon`;
     }
 
     document.title = title;
@@ -137,6 +141,7 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/leadership" element={<Leadership />} />
+                <Route path="/leadership/:slug" element={<LeaderProfile />} />
                 <Route path="/news" element={<NewsMedia />} />
                 <Route path="/partners" element={<Partners />} />
                 <Route path="/solutions" element={<Solutions />} />

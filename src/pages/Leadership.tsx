@@ -1,59 +1,8 @@
 import { motion } from 'framer-motion';
-import { FaQuoteLeft } from 'react-icons/fa';
-import { FiAward, FiGlobe, FiArrowRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { FiArrowRight, FiLinkedin, FiSearch, FiFilter } from 'react-icons/fi';
+import { executiveCouncil, globalLeadership } from '../data/leadershipData';
 import './Leadership.css';
-import ramTejaImg from '../assets/images/alex-fraylon.jpg';
-import vigneswarImg from '../assets/images/vigneswar-nalluri.jpg';
-
-const executiveRoots = {
-    top: [
-        {
-            name: "Ch. Ram Teja",
-            role: "Chief Executive Officer",
-            image: ramTejaImg,
-            bio: "Visionary leader driving global digital transformation and enterprise growth through modern innovation."
-        },
-        {
-            name: "Vigneswar Nalluri",
-            role: "Chief Technology Officer",
-            image: vigneswarImg,
-            bio: "Pioneering AI architect focused on building scalable, future-ready infrastructure."
-        }
-    ],
-    execs: [
-        {
-            name: "Lavanya Bojja",
-            role: "President",
-            image: "https://images.pexels.com/photos/1181682/pexels-photo-1181682.jpeg?auto=compress&cs=tinysrgb&w=800",
-            bio: "Strategic institutional leader driving organizational excellence and global healthy growth."
-        },
-        {
-            name: "Mahitha Bathula",
-            role: "Co-President",
-            image: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=800",
-            bio: "Focusing on operational brilliance and high-impact collaborative leadership."
-        },
-        {
-            name: "Yuvaraj Dudukuru",
-            role: "Chief Operating Officer",
-            image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800",
-            bio: "Expert in global delivery optimization and architectural execution frameworks."
-        },
-        {
-            name: "Nikhil Balaji Nandhagiri",
-            role: "Chief Marketing Officer",
-            image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=800",
-            bio: "Brand visionary crafting the global narrative of Fraylon's technological evolution."
-        }
-    ]
-};
-
-const steeringCommittee = [
-    { name: "Dr. Aris Vlahos", role: "Global Board Chair", region: "Athens, Greece" },
-    { name: "Yuki Tanaka", role: "Specialized Advisor", region: "Tokyo, Japan" },
-    { name: "David Henderson", role: "Independent Director", region: "London, UK" },
-    { name: "Ines Moretti", role: "Sustainability Lead", region: "Milan, Italy" }
-];
 
 const familyInsights = [
     {
@@ -82,155 +31,53 @@ const familyInsights = [
 const Leadership = () => {
     return (
         <div className="leadership-page">
-            {/* --- Hero Section --- */}
-            <section className="leadership-hero">
+            {/* --- Corporate Hero --- */}
+            <section className="corporate-hero">
                 <div className="container">
-                    <motion.span
-                        className="hero-tag"
-                        initial={{ opacity: 0, y: 10 }}
+                    <motion.div 
+                        className="hero-header"
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        THE FRAYLON GENEALOGY
-                    </motion.span>
-                    <div className="hero-content">
-                        <motion.h1
-                            className="hero-title"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-                        >
-                            Visionaries Guiding <br /> the Family Tree.
-                        </motion.h1>
-                        <motion.p
-                            className="hero-description"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-                        >
-                            We aren't just a corporation; we are a global family tree of innovators, architects, and visionaries rooted in shared values.
-                        </motion.p>
-                    </div>
+                        <span className="corporate-tag">NETWORK LEADERSHIP, GOVERNANCE AND DIVERSITY</span>
+                        <h1>Our Leadership.</h1>
+                        <p>The Fraylon Network is led by a diverse leadership team, whose vision is to build trust in society and solve important problems.</p>
+                    </motion.div>
                 </div>
             </section>
 
-            {/* --- Visual Tree Section --- */}
-            <section className="tree-structure-section">
+            {/* --- Executive Council (CEO/CTO) --- */}
+            <section className="council-section">
                 <div className="container">
-                    <div className="tree-container">
-                        {/* CEO & CTO Level */}
-                        <div className="tree-top-level">
-                            <div className="top-nodes-grid">
-                                {executiveRoots.top.map((leader, idx) => (
-                                    <motion.div 
-                                        key={idx}
-                                        className={`tree-node root-node ${idx === 0 ? 'ceo-node' : 'cto-node'}`}
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true }}
-                                    >
-                                        <div className="node-image">
-                                            <img src={leader.image} alt={leader.name} />
-                                        </div>
-                                        <div className="node-info">
-                                            <span className="node-role">{leader.role}</span>
-                                            <h3>{leader.name}</h3>
-                                            <p>{leader.bio}</p>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-                            <div className="root-multi-connector"></div>
-                        </div>
-
-                        {/* Execs Level */}
-                        <div className="tree-branches">
-                            <div className="branches-connector-line"></div>
-                            <div className="exec-grid">
-                                {executiveRoots.execs.map((exec, idx) => (
-                                    <motion.div 
-                                        key={idx}
-                                        className="tree-node exec-node"
-                                        initial={{ opacity: 0, y: 30 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: idx * 0.1 }}
-                                    >
-                                        <div className="node-image">
-                                            <img src={exec.image} alt={exec.name} />
-                                        </div>
-                                        <div className="node-info">
-                                            <span className="node-role">{exec.role}</span>
-                                            <h3>{exec.name}</h3>
-                                            <p>{exec.bio}</p>
-                                        </div>
-                                        <div className="branch-line"></div>
-                                    </motion.div>
-                                ))}
-                            </div>
+                    <div className="section-title-box">
+                        <span className="line-tag">EXECUTIVE COUNCIL</span>
+                        <div className="static-filter-bar">
+                            <span className="filter-label"><FiFilter /> All Regions</span>
+                            <span className="filter-label"><FiSearch /> Search Directory</span>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            {/* --- Steering Committee --- */}
-            <section className="committee-section">
-                <div className="container">
-                    <div className="committee-layout">
-                        <div className="committee-text">
-                            <FiAward className="section-icon" />
-                            <h2>Global Board & <br /> Steering Committee</h2>
-                            <p>An international assembly of advisors ensuring Fraylon remains a beacon of ethics and strategic excellence across every frontier.</p>
-                        </div>
-                        <div className="committee-grid">
-                            {steeringCommittee.map((member, idx) => (
-                                <motion.div 
-                                    key={member.name}
-                                    className="committee-card"
-                                    initial={{ opacity: 0, x: 20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
-                                >
-                                    <div className="card-top">
-                                        <FiGlobe className="geo-icon" />
-                                        <span>{member.region}</span>
-                                    </div>
-                                    <h4>{member.name}</h4>
-                                    <p>{member.role}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* --- Family Insights --- */}
-            <section className="family-insights-section">
-                <div className="container">
-                    <div className="section-header-centered">
-                        <span className="tag">THOUGHT LEADERSHIP</span>
-                        <h2>Family Insights</h2>
-                        <p>Perspectives from our roots on technology, culture, and the future of global enterprise.</p>
-                    </div>
-                    <div className="insights-tree-grid">
-                        {familyInsights.map((insight, idx) => (
+                    <div className="council-grid">
+                        {executiveCouncil.map((member, i) => (
                             <motion.div 
-                                key={idx}
-                                className="insight-tree-card"
-                                initial={{ opacity: 0, y: 20 }}
+                                key={member.name}
+                                className="council-card"
+                                initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
+                                transition={{ delay: i * 0.1, duration: 0.8 }}
                             >
-                                <div className="insight-image-wrapper">
-                                    <img src={insight.image} alt={insight.title} />
-                                    <span className="insight-category">{insight.category}</span>
+                                <div className="member-image-wrapper">
+                                    <img src={member.image} alt={member.name} />
+                                    <div className="social-overlay">
+                                        <FiLinkedin />
+                                    </div>
                                 </div>
-                                <div className="insight-content">
-                                    <span className="insight-date">{insight.date}</span>
-                                    <h3>{insight.title}</h3>
-                                    <p>{insight.excerpt}</p>
-                                    <button className="insight-read-more">Read Insight <FiArrowRight /></button>
+                                <div className="member-profile">
+                                    <span className="member-subtitle">{member.role}</span>
+                                    <h3>{member.name}</h3>
+                                    <p className="member-bio">{member.shortBio}</p>
+                                    <Link to={`/leadership/${member.slug}`} className="read-bio-btn">VIEW FULL PROFILE</Link>
                                 </div>
                             </motion.div>
                         ))}
@@ -238,21 +85,81 @@ const Leadership = () => {
                 </div>
             </section>
 
-            {/* --- Philosophy Section --- */}
-            <section className="philosophy-section">
+            {/* --- Global Operations Leadership --- */}
+            <section className="operations-section">
                 <div className="container">
-                    <motion.div
-                        className="philosophy-container"
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1 }}
-                    >
-                        <FaQuoteLeft className="quote-icon-large" />
-                        <h2 className="philosophy-text">
-                            A tree is only as strong as its roots. <br /> At Fraylon, our roots are our people, and our canopy is the future we build together.
-                        </h2>
-                    </motion.div>
+                    <div className="section-title-box">
+                        <span className="line-tag">GLOBAL OPERATIONS</span>
+                    </div>
+                    <div className="operations-grid">
+                        {globalLeadership.map((member, i) => (
+                            <motion.div 
+                                key={member.name}
+                                className="leader-profile-row"
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1, duration: 0.6 }}
+                            >
+                                <div className="row-content">
+                                    <div className="row-header">
+                                        <span className="role">{member.role}</span>
+                                        <Link to={`/leadership/${member.slug}`} className="name-link">
+                                            <h4>{member.name}</h4>
+                                        </Link>
+                                    </div>
+                                    <p>{member.shortBio}</p>
+                                </div>
+                                <div className="row-action">
+                                    <Link to={`/leadership/${member.slug}`} className="row-arrow">
+                                        <FiLinkedin className="ln-icon" />
+                                    </Link>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- MNC Insights --- */}
+            <section className="corporate-insights">
+                <div className="container">
+                    <div className="insights-header">
+                        <h2>Strategic Insights</h2>
+                        <p>Thought leadership from our global senior analysts.</p>
+                    </div>
+                    <div className="insights-grid">
+                        {familyInsights.map((insight) => (
+                            <motion.div 
+                                key={insight.title}
+                                className="insight-card-mnc"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                            >
+                                <div className="card-top">
+                                    <img src={insight.image} alt={insight.title} />
+                                    <span className="category-mnc">{insight.category}</span>
+                                </div>
+                                <div className="card-bottom">
+                                    <span className="date">{insight.date}</span>
+                                    <h4>{insight.title}</h4>
+                                    <p>{insight.excerpt}</p>
+                                    <button className="link-arrow">DISCOVER MORE <FiArrowRight /></button>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- Minimalist Quote --- */}
+            <section className="corporate-quote">
+                <div className="container">
+                    <div className="quote-wrap">
+                        <p>"Innovation is the pursuit of building architectures that survive the test of time."</p>
+                        <span className="attribution">THE FRAYLON INSTITUTIONAL PHILOSOPHY</span>
+                    </div>
                 </div>
             </section>
         </div>

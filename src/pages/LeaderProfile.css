@@ -1,0 +1,292 @@
+/* --- Elite MNC Leader Profile CSS (PwC/Big-4 Style) --- */
+
+.leader-profile-page {
+    background: #ffffff;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5vw;
+}
+
+/* --- Professional Breadcrumbs --- */
+.profile-breadcrumbs {
+    padding: 100px 0 20px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.profile-breadcrumbs .container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-breadcrumbs a {
+    color: var(--color-brand-black);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 800;
+    transition: color 0.3s ease;
+}
+
+.profile-breadcrumbs a:hover {
+    color: var(--mnc-accent);
+}
+
+.profile-breadcrumbs .sep {
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.profile-breadcrumbs .current {
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+}
+
+/* --- Hero Section - High End Gradient (PwC Style) --- */
+.profile-hero {
+    /* Soft Warm Gradient similar to PwC screenshot */
+    background: linear-gradient(105deg, #fff 15%, #fff5ed 50%, #ffe9d7 100%);
+    padding: 140px 0 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-text {
+    max-width: 750px;
+}
+
+.leader-role-tag {
+    display: block;
+    color: var(--mnc-accent);
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.leader-name-heading {
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    color: var(--mnc-brand-black);
+    font-weight: 950;
+    line-height: 0.95;
+    margin-bottom: 25px;
+    letter-spacing: -0.055em;
+}
+
+.leader-org-detail {
+    font-size: 1.8rem;
+    color: var(--mnc-brand-black);
+    font-weight: 800;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+}
+
+.leader-intro-para {
+    font-size: 1.5rem;
+    color: var(--mnc-text-deep);
+    line-height: 1.7;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.leader-contact-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--mnc-brand-black);
+    font-weight: 900;
+    text-decoration: underline;
+    font-size: 1.1rem;
+    text-underline-offset: 6px;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    color: var(--mnc-accent);
+    text-underline-offset: 10px;
+}
+
+.social-link {
+    color: var(--mnc-brand-black);
+    font-size: 2.2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    color: var(--mnc-accent);
+}
+
+/* Hero Portrait Styling */
+.hero-image-box {
+    width: 500px;
+    height: 600px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    /* Clean editorial shadow */
+    box-shadow: 0 60px 120px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    mix-blend-mode: normal;
+}
+
+/* --- Bio Content Area --- */
+.profile-content-section {
+    padding: 180px 0;
+}
+
+.bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 100px;
+}
+
+.main-bio p {
+    font-size: 1.4rem;
+    color: var(--mnc-text-deep);
+    line-height: 1.8;
+    margin-bottom: 60px;
+}
+
+.sidebar-info {
+    position: sticky;
+    top: 150px;
+}
+
+.info-block {
+    margin-bottom: 80px;
+}
+
+.info-block h5 {
+    font-size: 0.85rem;
+    font-weight: 900;
+    color: var(--mnc-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 15px;
+}
+
+.info-block p, .info-block ul {
+    font-size: 1.3rem;
+    color: var(--mnc-brand-black);
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.info-block ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-block ul li {
+    margin-bottom: 15px;
+}
+
+/* --- Wide CTA --- */
+.profile-cta {
+    padding: 120px 0 200px;
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.cta-box {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cta-box h3 {
+    font-size: 3.5rem;
+    color: var(--mnc-brand-black);
+    font-weight: 900;
+    margin-bottom: 30px;
+    letter-spacing: -0.04em;
+}
+
+.cta-box p {
+    font-size: 1.4rem;
+    color: var(--mnc-text-light);
+    margin-bottom: 50px;
+}
+
+.btn-mnc {
+    display: inline-block;
+    background: var(--mnc-brand-black);
+    color: #fff;
+    padding: 24px 60px;
+    font-weight: 900;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.btn-mnc:hover {
+    background: var(--mnc-accent);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 191, 179, 0.2);
+}
+
+/* --- Mobile Styling --- */
+@media (max-width: 1200px) {
+    .hero-layout {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 80px;
+    }
+    .hero-image-box {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4/5;
+    }
+    .bio-grid {
+        grid-template-columns: 1fr;
+    }
+    .sidebar-info {
+        position: static;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        padding-top: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .leader-name-heading {
+        font-size: 3.5rem;
+    }
+    .profile-hero {
+        padding: 80px 0 120px;
+    }
+    .main-bio p {
+        font-size: 1.2rem;
+    }
+}

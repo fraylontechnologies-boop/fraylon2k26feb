@@ -1,243 +1,244 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaArrowRight, FaCheckCircle } from 'react-icons/fa';
+import { FiArrowUpRight } from 'react-icons/fi';
 import './Contact.css';
 
 const Contact = () => {
-    const [activeCategory, setActiveCategory] = useState<string | null>(null);
+    const [activePath, setActivePath] = useState<string | null>(null);
     const [formData, setFormData] = useState({
-        inquiryType: 'General submission',
-        firstName: '',
-        lastName: '',
+        inquiryType: 'Engineering & Strategy',
+        name: '',
         email: '',
-        country: '',
         organization: '',
-        jobTitle: '',
-        message: '',
-        privacyAcknowledgement: false
+        message: ''
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const categories = [
-        { id: 'services', title: 'Services Enquiry', icon: <FaCheckCircle /> },
-        { id: 'general', title: 'General Submission', icon: <FaCheckCircle /> },
-        { id: 'careers', title: 'Alumni & Careers', icon: <FaCheckCircle /> },
-        { id: 'media', title: 'Media Inquiry', icon: <FaCheckCircle /> },
-        { id: 'partnership', title: 'Partnership', icon: <FaCheckCircle /> },
-        { id: 'other', title: 'Other Inquiries', icon: <FaCheckCircle /> }
+    const pathways = [
+        { id: 'eng', title: 'Engineering & Strategy', num: '01', desc: 'Scale your technical capacity with our elite engineering squads.' },
+        { id: 'ai', title: 'AI & Data Intelligence', num: '02', desc: 'Deploy autonomous agents and predictive models into your core stack.' },
+        { id: 'design', title: 'Product & UX Design', num: '03', desc: 'Transform complex workflows into intuitive digital experiences.' },
+        { id: 'partner', title: 'Strategic Partnerships', num: '04', desc: 'Collaborate on market-moving initiatives and ecosystem growth.' },
+        { id: 'careers', title: 'Alumni & Careers', num: '05', desc: 'Join our team of visionary engineers or reconnect with the network.' },
+        { id: 'media', title: 'Media & Press', num: '06', desc: 'Inquiries regarding press kits, interviews, and brand assets.' },
+        { id: 'growth', title: 'Digital Transformation', num: '07', desc: 'Modernize legacy infrastructure and migrate to secure cloud stacks.' },
+        { id: 'general', title: 'General Submission', num: '08', desc: 'For all other inquiries not covered by our primary pathways.' }
     ];
-
-    const handleCategoryClick = (category: any) => {
-        setActiveCategory(category.id);
-        setFormData(prev => ({ ...prev, inquiryType: category.title }));
-
-        // Optional: Smooth scroll to form on mobile/small screens
-        const formSection = document.querySelector('.contact-form-section');
-        if (formSection) {
-            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        const { name, value, type } = e.target as HTMLInputElement;
-        if (type === 'checkbox') {
-            const checked = (e.target as HTMLInputElement).checked;
-            setFormData(prev => ({ ...prev, [name]: checked }));
-        } else {
-            setFormData(prev => ({ ...prev, [name]: value }));
-        }
-    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!formData.privacyAcknowledgement) {
-            alert("Please acknowledge the privacy statement.");
-            return;
-        }
         setIsSubmitting(true);
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        await new Promise(resolve => setTimeout(resolve, 2000));
         setIsSubmitting(false);
         setIsSubmitted(true);
-        setFormData({
-            inquiryType: 'General submission',
-            firstName: '',
-            lastName: '',
-            email: '',
-            country: '',
-            organization: '',
-            jobTitle: '',
-            message: '',
-            privacyAcknowledgement: false
-        });
+        // Scroll to top to show success message
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
+
+    if (isSubmitted) {
+        return (
+            <div className="contact-page">
+                <section className="form-success-immersive">
+                    <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>
+                        <FaCheckCircle className="success-giant-icon" />
+                        <h1 className="hero-display-title">Transmission <br />RECIEVED</h1>
+                        <p className="hero-manifesto">Your request has been routed to our solution architects. Expect a response within one business cycle.</p>
+                        <button className="btn-return" onClick={() => setIsSubmitted(false)} style={{ border: '2px solid white', color: 'white' }}>Return to Home</button>
+                    </motion.div>
+                </section>
+            </div>
+        );
+    }
 
     return (
         <div className="contact-page">
-            {/* 1. Bold Infosys-inspired Hero */}
+            {/* 1. Cinematic Hero */}
             <section className="contact-hero">
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
+                <div className="hero-visual-bg"></div>
+                <div className="hero-content-immersive">
+                    <motion.h1 
+                        className="hero-display-title"
+                        initial={{ y: 100, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <h1 className="hero-display-title">How can we <br /><span className="text-secondary-highlight">help you?</span></h1>
-                        <p className="hero-subtext">Connect with our global engineering teams and specialists.</p>
-                    </motion.div>
+                        <span className="title-line">Let's build</span>
+                        <span className="title-line outline-text">The Future.</span>
+                    </motion.h1>
+                    <motion.p 
+                        className="hero-manifesto"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                    >
+                        Fraylon is where visionary ideas meet elite engineering. We don't just solve problems; we architect digital dominance.
+                    </motion.p>
                 </div>
             </section>
 
-            {/* 2. Enquiry Categories Grid */}
-            <section className="enquiry-grid-section">
+            {/* 2. Path Selection */}
+            <section className="paths-section">
                 <div className="container">
-                    <div className="category-grid">
-                        {categories.map((cat, idx) => (
-                            <motion.div
-                                key={cat.id}
-                                className={`category-card ${activeCategory === cat.id ? 'active' : ''}`}
-                                onClick={() => handleCategoryClick(cat)}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
+                    <span className="section-tag">/ Choose your pathway</span>
+                    <div className="path-list">
+                        {pathways.map((path, idx) => (
+                            <motion.div 
+                                key={path.id}
+                                className={`path-item ${activePath === path.id ? 'active' : ''}`}
+                                onClick={() => {
+                                    setActivePath(path.id);
+                                    setFormData(prev => ({ ...prev, inquiryType: path.title }));
+                                    // Smooth scroll to form after selection
+                                    setTimeout(() => {
+                                        const formSection = document.getElementById('form');
+                                        if (formSection) {
+                                            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                        }
+                                    }, 400);
+                                }}
+                                initial={{ opacity: 0, x: -50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: idx * 0.1 }}
                             >
-                                <div className="card-accent-bar"></div>
-                                <h3>{cat.title}</h3>
-                                <FaCheckCircle className="card-check" />
+                                <div className="path-main">
+                                    <span className="path-num">{path.num}</span>
+                                    <h3 className="path-title">{path.title}</h3>
+                                </div>
+                                <p className="path-desc">{path.desc}</p>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* 3. The Professional Form (Visible if a category is selected or always visible as secondary) */}
-            <section className="contact-form-section">
+            {/* 3. The Grand Form */}
+            <section className="contact-form-section" id="form">
                 <div className="container">
-                    <div className="form-layout-wrapper">
-                        <div className="form-header-inline">
-                            <h2>Submit an inquiry</h2>
-                            <p>Required fields are marked with an asterisk (*)</p>
-                        </div>
-
-                        <div className="form-container-glass">
-                            {isSubmitted ? (
-                                <div className="form-success">
-                                    <div className="success-check"><FaCheckCircle /></div>
-                                    <h2>Submission received</h2>
-                                    <p>An engineer from our team will review your request and contact you shortly.</p>
-                                    <button className="btn-return" onClick={() => setIsSubmitted(false)}>Send another message</button>
-                                </div>
-                            ) : (
-                                <form className="professional-form" onSubmit={handleSubmit}>
-                                    <div className="form-grid">
-                                        <div className="field-wrapper full-width">
-                                            <label>Inquiry type *</label>
-                                            <select name="inquiryType" value={formData.inquiryType} onChange={handleChange} required>
-                                                <option value="General submission">General submission</option>
-                                                <option value="Alumni inquiry">Alumni inquiry</option>
-                                                <option value="Industry inquiry - Automotive">Industry inquiry - Automotive</option>
-                                                <option value="Industry inquiry - Energy">Industry inquiry - Energy</option>
-                                                <option value="Industry inquiry - Financial services">Industry inquiry - Financial services</option>
-                                                <option value="Industry inquiry - Food, drink, consumer goods and retail">Industry inquiry - Food, drink, consumer goods and retail</option>
-                                                <option value="Industry inquiry - Government and public sector">Industry inquiry - Government and public sector</option>
-                                                <option value="Industry inquiry - Healthcare">Industry inquiry - Healthcare</option>
-                                                <option value="Industry inquiry - Industrial manufacturing">Industry inquiry - Industrial manufacturing</option>
-                                                <option value="Industry inquiry - Infrastructure">Industry inquiry - Infrastructure</option>
-                                                <option value="Industry inquiry - Life sciences">Industry inquiry - Life sciences</option>
-                                                <option value="Industry inquiry - Private equity">Industry inquiry - Private equity</option>
-                                                <option value="Industry inquiry - Real estate">Industry inquiry - Real estate</option>
-                                                <option value="Industry inquiry - Technology, telecommunication and media">Industry inquiry - Technology, telecommunication and media</option>
-                                                <option value="Industry inquiry - Transport and leisure">Industry inquiry - Transport and leisure</option>
-                                                <option value="People inquiry">People inquiry</option>
-                                                <option value="Preference Center">Preference Center</option>
-                                                <option value="Report issue with the site">Report issue with the site</option>
-                                                <option value="Service inquiry - Private Enterprise">Service inquiry - Private Enterprise</option>
-                                                <option value="Services inquiry - Advisory">Services inquiry - Advisory</option>
-                                            </select>
-                                        </div>
-
-                                        <div className="field-wrapper">
-                                            <label>First Name *</label>
-                                            <input name="firstName" type="text" placeholder="First name" value={formData.firstName} onChange={handleChange} required />
-                                        </div>
-                                        <div className="field-wrapper">
-                                            <label>Last Name *</label>
-                                            <input name="lastName" type="text" placeholder="Last name" value={formData.lastName} onChange={handleChange} required />
-                                        </div>
-                                        <div className="field-wrapper">
-                                            <label>Work Email *</label>
-                                            <input name="email" type="email" placeholder="name@company.com" value={formData.email} onChange={handleChange} required />
-                                        </div>
-                                        <div className="field-wrapper">
-                                            <label>Country / Region *</label>
-                                            <select name="country" value={formData.country} onChange={handleChange} required>
-                                                <option value="">Select country</option>
-                                                <option value="India">India</option>
-                                                <option value="United States">United States</option>
-                                                <option value="United Kingdom">United Kingdom</option>
-                                                <option value="Germany">Germany</option>
-                                                <option value="Singapore">Singapore</option>
-                                            </select>
-                                        </div>
-                                        <div className="field-wrapper">
-                                            <label>Company / Organization *</label>
-                                            <input name="organization" type="text" placeholder="Organization" value={formData.organization} onChange={handleChange} required />
-                                        </div>
-                                        <div className="field-wrapper">
-                                            <label>Job title *</label>
-                                            <input name="jobTitle" type="text" placeholder="e.g. CTO" value={formData.jobTitle} onChange={handleChange} required />
-                                        </div>
-
-                                        <div className="field-wrapper full-width">
-                                            <label>Message (up to 2500 characters) *</label>
-                                            <textarea name="message" rows={5} maxLength={2500} placeholder="How can we help?" value={formData.message} onChange={handleChange} required></textarea>
-                                        </div>
-
-                                        <div className="field-wrapper full-width checkbox-wrapper">
-                                            <input name="privacyAcknowledgement" type="checkbox" id="privacyAcknowledgement" checked={formData.privacyAcknowledgement} onChange={handleChange} required />
-                                            <label htmlFor="privacyAcknowledgement">
-                                                I acknowledge that I have read and understood the <a href="/privacy" className="inline-link">online privacy statement</a>.
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div className="form-footer">
-                                        <button className="submit-action" disabled={isSubmitting}>
-                                            {isSubmitting ? 'Processing...' : 'Submit Message'}
-                                        </button>
-                                    </div>
-                                </form>
+                    <div className="form-split">
+                        <div className="form-intro">
+                            <h2>Submit <br />Inquiry.</h2>
+                            <p>Direct communication with our global hubs. Every message is reviewed by a Senior Partner.</p>
+                            {activePath && (
+                                <motion.div 
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    className="selected-badge"
+                                    key={activePath}
+                                >
+                                    {formData.inquiryType}
+                                </motion.div>
                             )}
                         </div>
+                        <div className="form-area">
+                            <form className="minimal-form" onSubmit={handleSubmit}>
+                                <div className="input-row">
+                                    <div className="input-group">
+                                        <label>Full Name</label>
+                                        <input 
+                                            type="text" 
+                                            placeholder="Your Name" 
+                                            className="minimal-input" 
+                                            required 
+                                            value={formData.name}
+                                            onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                        />
+                                    </div>
+                                    <div className="input-group">
+                                        <label>Email Address</label>
+                                        <input 
+                                            type="email" 
+                                            placeholder="name@company.com" 
+                                            className="minimal-input" 
+                                            required 
+                                            value={formData.email}
+                                            onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="input-group">
+                                    <label>Organization</label>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Company Name" 
+                                        className="minimal-input" 
+                                        value={formData.organization}
+                                        onChange={(e) => setFormData({...formData, organization: e.target.value})}
+                                    />
+                                </div>
+
+                                <div className="input-group full-width">
+                                    <label>Message</label>
+                                    <textarea 
+                                        rows={3} 
+                                        placeholder="Briefly describe your challenge..." 
+                                        className="minimal-textarea" 
+                                        required
+                                        value={formData.message}
+                                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                                    ></textarea>
+                                </div>
+
+                                <button type="submit" className="submit-huge" disabled={isSubmitting}>
+                                    <span>
+                                        {isSubmitting 
+                                            ? 'Processing...' 
+                                            : (['eng', 'ai', 'design', 'growth'].includes(activePath || '') 
+                                                ? 'Initiate Project' 
+                                                : 'Submit Inquiry')}
+                                    </span>
+                                    <FaArrowRight />
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* 4. Global Presence Dark Section */}
-            <section className="global-reach-dark">
+            {/* 4. Flagship Headquarters */}
+            <section className="global-network">
                 <div className="container">
-                    <div className="reach-header">
-                        <h2>Global Presence</h2>
-                        <div className="accent-line"></div>
-                    </div>
-                    <div className="office-grid">
-                        <div className="office-card">
-                            <h4>India</h4>
-                            <p>Engineering Square, Tech Hub<br />Hyderabad, Telangana</p>
+                    <div className="hq-flagship-container">
+                        <div className="hq-visual-side">
+                            <img src="/hyderabad-hq.png" alt="Fraylon Hyderabad HQ" className="hq-image" />
+                            <div className="hq-visual-overlay"></div>
                         </div>
-                        <div className="office-card">
-                            <h4>Americas</h4>
-                            <p>Silicon Valley Center<br />San Jose, CA</p>
-                        </div>
-                        <div className="office-card">
-                            <h4>Europe</h4>
-                            <p>London Innovation Lab<br />United Kingdom</p>
+                        <div className="hq-info-side">
+                            <span className="section-tag" style={{ textAlign: 'left', marginBottom: '20px' }}>/ Strategic Hub</span>
+                            <h3>Flagship <br />Headquarters.</h3>
+                            
+                            <div className="hq-detail-block">
+                                <h4 className="hub-city">Hyderabad</h4>
+                                <p className="hub-address">India — Engineering Square, Phase II<br />HITEC City, Telangana</p>
+                                <a href="mailto:india.hq@fraylon.com" className="hub-contact">
+                                    india.hq@fraylon.com <FiArrowUpRight />
+                                </a>
+                            </div>
+
+                            <div className="hq-highlights">
+                                <div className="highlight-item">
+                                    <span className="h-label">Capabilities</span>
+                                    <span className="h-value">Core Engineering, AI R&D</span>
+                                </div>
+                                <div className="highlight-item">
+                                    <span className="h-label">Operations</span>
+                                    <span className="h-value">24/7 Global Delivery</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            <footer style={{ padding: '40px 0', textAlign: 'center', opacity: '0.3', fontSize: '0.8rem' }}>
+                FRAYLON TECHNOLOGIES © 2026 — ALL RIGHTS RESERVED
+            </footer>
         </div>
     );
 };
 
 export default Contact;
+
+
