@@ -101,6 +101,9 @@ const Leadership = () => {
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1, duration: 0.6 }}
                             >
+                                <div className="leader-row-avatar">
+                                    <img src={member.image} alt={member.name} />
+                                </div>
                                 <div className="row-content">
                                     <div className="row-header">
                                         <span className="role">{member.role}</span>

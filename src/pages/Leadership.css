@@ -123,31 +123,30 @@
 .council-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 60px;
+    gap: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .council-card {
     display: flex;
+    flex-direction: column;
     background: #fff;
-    border-radius: 0;
-    overflow: hidden;
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
 }
 
 .council-card:hover {
-    transform: translateY(-20px);
-    box-shadow: 0 40px 80px rgba(0,0,0,0.08);
-    border-color: var(--mnc-accent);
+    transform: none;
 }
 
 .member-image-wrapper {
-    width: 320px;
-    height: 450px;
+    width: 100%;
+    aspect-ratio: 1 / 1.2;
+    height: auto;
     flex-shrink: 0;
     position: relative;
-    background: #f1f5f9;
+    background: #f8fafc;
     overflow: hidden;
 }
 
@@ -155,61 +154,56 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(100%) contrast(1.1);
-    transition: all 0.8s ease;
+    transition: all 0.6s ease;
 }
 
 .council-card:hover .member-image-wrapper img {
-    filter: grayscale(0%) contrast(1.05);
-    transform: scale(1.05);
+    transform: none;
 }
 
 .member-profile {
-    padding: 60px;
+    padding: 40px 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     background: #fff;
-    flex-grow: 1;
 }
 
 .member-subtitle {
     color: var(--mnc-accent);
-    font-weight: 900;
-    font-size: 0.7rem;
+    font-weight: 700;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.25em;
-    margin-bottom: 20px;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
 }
 
 .member-profile h3 {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
     color: var(--mnc-brand-black);
-    font-weight: 950;
-    margin-bottom: 25px;
-    line-height: 1;
-    letter-spacing: -0.03em;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
 .member-bio {
-    color: var(--mnc-text-deep);
-    font-size: 1.2rem;
+    color: var(--mnc-text-light);
+    font-size: 1.05rem;
     line-height: 1.6;
-    margin-bottom: 40px;
-    opacity: 0.8;
-    font-weight: 500;
+    margin-bottom: 30px;
+    font-weight: 400;
 }
 
 .read-bio-btn {
-    font-weight: 950;
-    font-size: 0.8rem;
+    font-weight: 700;
+    font-size: 0.85rem;
     color: var(--mnc-brand-black);
     text-decoration: none;
-    letter-spacing: 0.2em;
-    border-bottom: 3px solid var(--mnc-accent);
-    padding-bottom: 8px;
-    width: fit-content;
-    transition: all 0.4s ease;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
 }
 
 .read-bio-btn:hover {
@@ -225,23 +219,48 @@
 
 .operations-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px;
 }
 
 .leader-profile-row {
-    background: white;
-    padding: 50px;
-    border: 1px solid rgba(0,0,0,0.03);
+    background: #fff;
+    padding: 24px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 0;
     align-items: flex-start;
-    transition: all 0.4s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    height: 100%;
 }
 
 .leader-profile-row:hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
     border-color: var(--mnc-accent);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+}
+
+.leader-row-avatar {
+    width: 100%;
+    aspect-ratio: 1 / 1.1;
+    height: auto;
+    flex-shrink: 0;
+    background: #f8fafc;
+    border-radius: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.leader-row-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s ease;
+}
+
+.leader-profile-row:hover .leader-row-avatar img {
+    filter: grayscale(0%);
 }
 
 .row-header .role {
@@ -254,33 +273,45 @@
     display: block;
 }
 
-.name-link {
-    text-decoration: none;
+.row-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.row-header h4 {
-    font-size: 1.8rem;
+.name-link h4 {
+    font-size: 1.25rem;
     color: var(--mnc-brand-black);
     font-weight: 800;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
 }
 
 .row-content p {
-    font-size: 1.05rem;
+    font-size: 0.9rem;
     color: var(--mnc-text-light);
     line-height: 1.6;
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+.row-action {
+    margin-top: auto;
+    width: 100%;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: flex-end;
 }
 
 .row-action .ln-icon {
-    font-size: 1.8rem;
-    color: var(--mnc-brand-black);
-    opacity: 0.1;
+    font-size: 1.2rem;
+    color: var(--mnc-accent);
     transition: all 0.3s ease;
 }
 
 .leader-profile-row:hover .ln-icon {
-    opacity: 1;
-    color: var(--mnc-accent);
+    transform: scale(1.1);
 }
 
 /* --- Insights Corporate Styling --- */

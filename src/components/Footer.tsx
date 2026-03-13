@@ -16,8 +16,7 @@ const Footer = () => {
             <div className="footer-top">
                 <div className="footer-brand-col">
                     <div className="footer-brand">
-                        <div className="footer-logo-icon" />
-                        <h2>FRAYLON</h2>
+                        <img src="/logo.png" alt="Fraylon Logo" className="footer-logo-img" />
                     </div>
                     <div className="social-links">
                         <a href="#" className="social-icon" aria-label="LinkedIn"><FaLinkedin /></a>

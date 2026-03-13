@@ -96,8 +96,7 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
       <Link to="/" className="logo" onClick={closeMenu}>
-        <div className="logo-icon" />
-        FRAYLON
+        <img src="/logo.png" alt="Fraylon Logo" className="logo-img" />
       </Link>
 
       <div className="nav-links desktop-only">

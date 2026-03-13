@@ -29,11 +29,14 @@
     margin-bottom: 20px;
 }
 
+.footer-logo-img {
+    height: 64px;
+    width: auto;
+    display: block;
+}
+
 .footer-logo-icon {
-    width: 6px;
-    height: 28px;
-    background: var(--color-primary);
-    transform: skewX(-15deg);
+    display: none;
 }
 
 .footer-brand h2 {
@@ -54,26 +57,25 @@
 
 .social-links {
     display: flex;
-    gap: 16px;
+    gap: 20px;
+    margin-bottom: 5px;
 }
 
 .social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(0, 0, 0, 0.6);
-    transition: color 0.3s ease;
+    color: var(--text-main);
+    transition: all 0.3s ease;
     font-size: 1.4rem;
-    /* Slightly larger icons since the box is gone */
     text-decoration: none;
-    position: relative;
+    opacity: 0.7;
 }
-
-/* Tech Corner Brackets */
-/* Removed corner brackets */
 
 .social-icon:hover {
     color: var(--color-primary);
+    opacity: 1;
+    transform: translateY(-3px);
 }
 
 /* --- Newsletter Section (inside Brand Col) --- */

@@ -116,7 +116,7 @@ export const globalLeadership: Leader[] = [
             "His expertise is in reputation management and high-impact digital storytelling, ensuring that Fraylon's complex technical achievements are translated into meaningful human experiences.",
             "Nikhil serves on the board of the Global Digital Council, focusing on the future of corporate transparency and brand ethics in the age of generative media."
         ],
-        image: "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=800",
+        image: "/nikhil_balaji.jpg",
         linkedIn: "https://linkedin.com"
     }
 ];
