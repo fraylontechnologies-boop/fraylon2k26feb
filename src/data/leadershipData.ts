@@ -68,7 +68,7 @@ export const globalLeadership: Leader[] = [
             "With a background in international economics and crisis management, she is instrumental in Fraylon's ability to maintain continuity and growth in highly volatile geopolitical environments.",
             "She currently chairs the Fraylon Diversity Board, focusing on building high-performance cross-cultural teams that reflect the diversity of the global markets Fraylon serves."
         ],
-        image: "https://images.pexels.com/photos/1181691/pexels-photo-1181691.jpeg?auto=compress&cs=tinysrgb&w=800",
+        image: "",
         linkedIn: "https://linkedin.com"
     },
     {
@@ -84,7 +84,7 @@ export const globalLeadership: Leader[] = [
             "Her focus is on 'Collaborative Disruption,' working with local governments and sovereign funds to build future-ready digital foundations through Fraylon's specialized infrastructure.",
             "Mahitha is recognized globally for her expertise in public-private partnerships (PPP) and has been named one of the 'Top 50 Innovators' in the APAC region for her work on digital inclusivity."
         ],
-        image: "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=800",
+        image: "",
         linkedIn: "https://linkedin.com"
     },
     {
@@ -100,7 +100,7 @@ export const globalLeadership: Leader[] = [
             "He pioneered the 'Agile MNC' framework, allowing a global organization like Fraylon to maintain the speed of a startup while delivering the stability required for enterprise-scale operations.",
             "Under his stewardship, Fraylon has achieved the highest certification standards in global delivery reliability and information security."
         ],
-        image: "https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=800",
+        image: "",
         linkedIn: "https://linkedin.com"
     },
     {
